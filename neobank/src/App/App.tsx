@@ -1,7 +1,8 @@
+import { BrowserRouter } from 'react-router-dom';
 import './App.scss';
 
 const App = () => {
-  return <div className="app">App</div>;
+  return <BrowserRouter>hello</BrowserRouter>;
 };
 
 export default App;
