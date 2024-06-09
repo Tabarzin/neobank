@@ -1,0 +1,19 @@
+@import "@styles/mixins.scss";
+.navmenu {
+  @include ubuntu-bold;
+  font-size: 16px;
+  line-height: 112%;
+  letter-spacing: 0.02em;
+  color: #1d1929;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.navmenu__links {
+  display: flex;
+  width: 100%;
+  max-width: 440px;
+  list-style-type: none;
+  justify-content: space-between;
+}

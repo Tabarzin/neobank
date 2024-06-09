@@ -1,0 +1,18 @@
+@import "@styles/mixins.scss";
+@import "@styles/variables";
+
+.button {
+  border-radius: 16px;
+  border: none;
+  padding: 16px;
+  background-color: $button-background;
+  height: 50px;
+  @include ubuntu-bold;
+  font-size: 16px;
+  line-height: 112%;
+  letter-spacing: 0.02em;
+  text-align: center;
+  color: $white;
+  white-space: nowrap;
+  cursor: pointer;
+}

@@ -1,7 +1,7 @@
 import './Logo.scss';
 
 const Logo = () => {
-  return <span className="logo">Logo</span>;
+  return <span className="logo">NeoBank</span>;
 };
 
 export default Logo;

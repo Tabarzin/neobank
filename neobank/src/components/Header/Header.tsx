@@ -8,7 +8,7 @@ const Header = () => {
     <header className="header">
       <Logo />
       <NavMenu />
-      <Button>Button</Button>
+      <Button className="button">Online Bank</Button>
     </header>
   );
 };

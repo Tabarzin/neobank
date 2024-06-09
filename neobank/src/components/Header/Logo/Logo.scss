@@ -1,6 +1,7 @@
 @import "@styles/mixins.scss";
 
 .logo {
-  color: red;
+  color: #b4387a;
+  font-size: 24px;
   @include ubuntu-bold;
 }
