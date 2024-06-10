@@ -1,0 +1,46 @@
+@import "@styles/mixins";
+
+.features {
+  display: flex;
+  justify-content: space-around;
+
+  &__text_h2 {
+    @include rubik-medium;
+    font-size: 35px;
+    line-height: 143%;
+    color: #0b132a;
+  }
+
+  &__text_subtitle {
+    @include rubik-regular;
+    font-size: 16px;
+    line-height: 187%;
+    color: #4f5665;
+  }
+
+  &__list {
+    list-style-type: none;
+    padding-left: 0;
+  }
+}
+
+.features__list_item {
+  @include rubik-regular;
+  font-size: 14px;
+  line-height: 214%;
+  color: #4f5665;
+  position: relative;
+  padding-left: 30px;
+  margin-bottom: 10px;
+
+  &::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 24px; // Diameter of the circle
+    height: 24px; // Diameter of the circle
+    background-image: url("@assets/images/check-circle.svg");
+  }
+}

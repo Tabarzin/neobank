@@ -1,0 +1,20 @@
+@import "@styles/mixins";
+@import "@styles/variables";
+
+.map {
+  display: flex;
+  flex-direction: column;
+  @include ubuntu-medium;
+  color: $black;
+  text-align: center;
+
+  &__h3 {
+    font-size: 30px;
+    line-height: 167%;
+  }
+
+  &__subtitle {
+    font-size: 16px;
+    line-height: 312%;
+  }
+}
