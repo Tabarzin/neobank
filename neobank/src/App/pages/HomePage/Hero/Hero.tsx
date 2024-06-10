@@ -10,15 +10,17 @@ import cardImage4 from '@assets/images/cardImage4.svg';
 const Hero = () => {
   return (
     <section className="hero">
-      <div className="hero__textblock">
-        <h1 className="hero__h1">Choose the design you like and apply for card right now</h1>
-        <Button>Choose the card</Button>
-      </div>
-      <div className="hero__cardsblock">
-        <img src={cardImage1} alt="Banking Card" />
-        <img src={cardImage2} alt="Banking Card" />
-        <img src={cardImage3} alt="Banking Card" />
-        <img src={cardImage4} alt="Banking Card" />
+      <div className="hero-content">
+        <div className="hero-content__textblock">
+          <h1 className="hero-content__h1">Choose the design you like and apply for card right now</h1>
+          <Button>Choose the card</Button>
+        </div>
+        <div className="hero-content__cardsblock">
+          <img src={cardImage1} alt="Banking Card" />
+          <img src={cardImage2} alt="Banking Card" />
+          <img src={cardImage3} alt="Banking Card" />
+          <img src={cardImage4} alt="Banking Card" />
+        </div>
       </div>
     </section>
   );

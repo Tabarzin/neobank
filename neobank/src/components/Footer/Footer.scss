@@ -1,0 +1,21 @@
+@import "@styles/mixins";
+@import "@styles/variables";
+
+.footer {
+  background-color: $footer-background;
+}
+
+.footer-content {
+  max-width: 1300px;
+
+  &__contacts {
+  }
+
+  &__nav {
+    &_list {
+      list-style-type: none;
+    }
+  }
+  &__legalinfo {
+  }
+}

@@ -1,0 +1,66 @@
+@import "@styles/mixins";
+@import "@styles/variables";
+
+.subscribe {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__support {
+    @include ubuntu-bold;
+    font-size: 24px;
+    line-height: 147%;
+    letter-spacing: 0.02em;
+    text-align: center;
+    color: #eb801d;
+    text-decoration: none;
+  }
+
+  &__h3 {
+    @include ubuntu-bold;
+    font-size: 30px;
+    line-height: 147%;
+    letter-spacing: 0.02em;
+    text-align: center;
+    color: $black;
+    max-width: 420px;
+  }
+
+  &__form {
+    width: 524px;
+    height: 89px;
+    border-radius: 20px;
+    box-shadow: 0 10px 20px 0 rgba(54, 58, 120, 0.1);
+    background: $white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  &__input {
+    @include nunito-regular;
+    font-size: 20px;
+    line-height: 147%;
+    letter-spacing: 0.02em;
+    color: #9092b0;
+    border: none;
+  }
+
+  &__button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+    border: none;
+    width: 161px;
+    height: 44px;
+    background: #686df1;
+    color: $white;
+    @include ubuntu-bold;
+    font-size: 16px;
+    line-height: 127%;
+    color: #fff;
+    cursor: pointer;
+  }
+}

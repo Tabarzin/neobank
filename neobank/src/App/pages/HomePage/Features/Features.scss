@@ -1,8 +1,10 @@
 @import "@styles/mixins";
 
-.features {
+.features-content {
   display: flex;
   justify-content: space-around;
+  max-width: 1300px;
+  margin: 0 auto;
 
   &__text_h2 {
     @include rubik-medium;
@@ -39,8 +41,8 @@
     left: 0;
     top: 50%;
     transform: translateY(-50%);
-    width: 24px; // Diameter of the circle
-    height: 24px; // Diameter of the circle
+    width: 24px;
+    height: 24px;
     background-image: url("@assets/images/check-circle.svg");
   }
 }

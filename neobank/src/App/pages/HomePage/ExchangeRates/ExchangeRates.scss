@@ -1,7 +1,9 @@
 @import "@styles/mixins";
 @import "@styles/variables";
 
-.exchange {
+.exchange-content {
+  max-width: 1300px;
+  margin: 0 auto;
   box-shadow:
     0 2px 4px 0 rgba(187, 187, 187, 0.2),
     0 0 4px 0 rgba(0, 0, 0, 0.08);
@@ -49,7 +51,7 @@
   }
 }
 
-.exchange__rates {
+.exchange-content__rates {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -76,9 +78,5 @@
 
   &_rate {
     color: $black;
-  }
-
-  &_image {
-    // Styles for the image
   }
 }

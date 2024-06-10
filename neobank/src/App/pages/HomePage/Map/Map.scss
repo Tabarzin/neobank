@@ -4,6 +4,8 @@
 .map {
   display: flex;
   flex-direction: column;
+  max-width: 1300px;
+  margin: 0 auto;
   @include ubuntu-medium;
   color: $black;
   text-align: center;
