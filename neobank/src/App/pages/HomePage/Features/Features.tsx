@@ -6,9 +6,8 @@ const Features = () => {
   return (
     <section className="features">
       <div className="features-content">
-        <div className="features-content__image">
-          <img src={features_image} alt="Features Image" />
-        </div>
+        <img src={features_image} alt="Features Image" className="features-content__image" />
+
         <div className="features-content__text">
           <h2 className="features-content__text_h2">We Provide Many Features You Can Use</h2>
           <span className="features__text_subtitle">

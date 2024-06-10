@@ -6,7 +6,7 @@ const Map = () => {
     <section className="map">
       <h3 className="map__h3">You can use our services anywhere in the world</h3>
       <span className="map__subtitle">Withdraw and transfer money online through our application</span>
-      <img src={map} alt="Map" />
+      <img src={map} alt="Map" className="map__image" />
     </section>
   );
 };

@@ -6,6 +6,10 @@
   max-width: 1300px;
   margin: 0 auto;
 
+  @media (max-width: 740px) {
+    flex-wrap: wrap;
+  }
+
   &__text_h2 {
     @include rubik-medium;
     font-size: 35px;
@@ -24,9 +28,15 @@
     list-style-type: none;
     padding-left: 0;
   }
+
+  &__image {
+    width: 100%;
+    height: auto;
+    max-width: 510px;
+  }
 }
 
-.features__list_item {
+.features-content__list_item {
   @include rubik-regular;
   font-size: 14px;
   line-height: 214%;
