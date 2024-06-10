@@ -1,10 +1,22 @@
 import './Footer.scss';
+import logo from '@assets/images/logo.svg';
 
 const Footer = () => {
   return (
-    <footer className=" footer">
+    <footer className="footer">
       <div className="footer-content">
-        <div className="footer-content__contacts"></div>
+        <div className="footer-content__contacts">
+          <img src={logo} alt="Neoflex Logo" />
+          <div className="footer-content__contacts-block">
+            <a href="tel:+74959842513" className="footer-content__contacts_tel">
+              +7 (495) 984 25 13
+            </a>
+
+            <a href="mailto:info@neoflex.ru" className="footer-content__contacts_email">
+              info@neoflex.ru
+            </a>
+          </div>
+        </div>
         <nav className="footer-content__nav">
           <ul className="footer-content__nav_list">
             <li>About bank</li>

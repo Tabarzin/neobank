@@ -11,7 +11,7 @@ const HomePage = () => {
   return (
     <>
       <Header />
-      <main>
+      <main className="main">
         <Hero />
         <Features />
         <ExchangeRates />

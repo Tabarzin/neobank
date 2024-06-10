@@ -1,4 +1,5 @@
 @import "@styles/mixins";
+@import "@styles/variables";
 
 .hero {
 }
@@ -6,20 +7,25 @@
 .hero-content {
   max-width: 1300px;
   display: flex;
-  align-items: center;
+
   justify-content: space-between;
   margin: 0 auto;
 
   &__textblock {
     width: 635px;
     height: 225px;
+
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
   }
 
   &__h1 {
     @include ubuntu-bold;
     font-size: 48px;
     line-height: 104%;
-    color: #1c1c1e;
+    color: $black;
+    margin-top: 0;
   }
 
   &__cardsblock {
