@@ -14,7 +14,7 @@ const Subscribe = () => {
           type="email"
           id="email"
           name="email"
-          pattern=".+@example\.com"
+          pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$"
           className="subscribe__input"
           placeholder="Your email"
         />
