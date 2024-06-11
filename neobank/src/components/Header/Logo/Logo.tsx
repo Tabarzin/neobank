@@ -1,7 +1,12 @@
+import { Link } from 'react-router-dom';
 import './Logo.scss';
 
 const Logo = () => {
-  return <span className="logo">NeoBank</span>;
+  return (
+    <Link to="/" className="logo">
+      NeoBank
+    </Link>
+  );
 };
 
 export default Logo;

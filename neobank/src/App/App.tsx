@@ -1,13 +1,15 @@
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.scss';
+import CreditCard from './pages/CreditCard';
 import HomePage from './pages/HomePage';
 
 const App = () => {
   return (
     <BrowserRouter>
-      <div className="app">
-        <HomePage />
-      </div>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/card" element={<CreditCard />} />
+      </Routes>
     </BrowserRouter>
   );
 };
