@@ -16,4 +16,9 @@
   max-width: 440px;
   list-style-type: none;
   justify-content: space-between;
+
+  @media (max-width: 440px) {
+    flex-direction: column;
+    padding-left: 0;
+  }
 }

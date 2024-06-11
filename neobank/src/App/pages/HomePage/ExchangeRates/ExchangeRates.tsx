@@ -12,7 +12,7 @@ const ExchangeRates = () => {
         <span className="exchange-content__currency">Currency</span>
         <div className="exchange-content__rates">
           <div className="exchange-content__rates_grid">
-            <div className="exchange__rates_item">
+            <div className="exchange-content__rates_item">
               <span className="exchange-content__rates_currency">USD:</span>
               <span className="exchange-content__rates_rate">60.78</span>
             </div>

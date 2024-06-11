@@ -10,7 +10,7 @@ const Features = () => {
 
         <div className="features-content__text">
           <h2 className="features-content__text_h2">We Provide Many Features You Can Use</h2>
-          <span className="features__text_subtitle">
+          <span className="features-content__text_subtitle">
             You can explore the features that we provide with fun and have their own functions each feature
           </span>
           <ul className="features-content__list">

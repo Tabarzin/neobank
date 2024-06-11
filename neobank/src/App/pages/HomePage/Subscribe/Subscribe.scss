@@ -27,8 +27,7 @@
   }
 
   &__form {
-    width: 524px;
-    height: 89px;
+    padding: 20px;
     border-radius: 20px;
     box-shadow: 0 10px 20px 0 rgba(54, 58, 120, 0.1);
     background: $white;
@@ -45,6 +44,9 @@
     letter-spacing: 0.02em;
     color: #9092b0;
     border: none;
+    background: url("../../../../assets/images/email.svg") left;
+    background-repeat: no-repeat;
+    padding-left: 35px;
   }
 
   &__button {

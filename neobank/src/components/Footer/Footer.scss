@@ -7,12 +7,18 @@
 
 .footer-content {
   max-width: 1300px;
-  height: 460px;
+  min-height: 460px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   margin: 0 auto;
   padding: 10px;
+
+  &__logo {
+    width: 100%;
+    height: auto;
+    max-width: 160px;
+  }
 
   &__contacts {
     display: flex;

@@ -5,4 +5,8 @@
   margin: 0 auto;
   margin-bottom: 60px;
   padding: 10px;
+
+  @media (max-width: 740px) {
+    flex-wrap: wrap;
+  }
 }

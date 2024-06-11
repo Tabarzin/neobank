@@ -10,7 +10,6 @@ const Subscribe = () => {
       </a>
       <h3 className="subscribe__h3">Subscribe Newsletter & get Bank News</h3>
       <form action="" method="post" className="subscribe__form">
-        <img src={email} alt="Email image" />
         <input
           type="email"
           id="email"
@@ -19,6 +18,7 @@ const Subscribe = () => {
           className="subscribe__input"
           placeholder="Your email"
         />
+
         <button type="submit" className="subscribe__button">
           <img src={send} alt="Send" />
           Subscribe

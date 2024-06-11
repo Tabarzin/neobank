@@ -16,6 +16,14 @@
     gap: 20px;
   }
 
+  @media (max-width: 470px) {
+    gap: 80px;
+  }
+
+  @media (max-width: 380px) {
+    gap: 200px;
+  }
+
   &__textblock {
     width: 635px;
     height: 225px;
