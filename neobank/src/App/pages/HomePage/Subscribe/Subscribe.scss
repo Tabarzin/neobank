@@ -35,6 +35,11 @@
     align-items: center;
     justify-content: center;
     gap: 10px;
+
+    @media (max-width: 500px) {
+      flex-direction: column;
+      align-items: flex-start;
+    }
   }
 
   &__input {
@@ -47,6 +52,10 @@
     background: url("../../../../assets/images/email.svg") left;
     background-repeat: no-repeat;
     padding-left: 35px;
+
+    @media (max-width: 340px) {
+      font-size: 15px;
+    }
   }
 
   &__button {

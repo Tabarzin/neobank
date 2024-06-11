@@ -24,6 +24,10 @@
     display: flex;
     justify-content: space-between;
 
+    @media (max-width: 460px) {
+      flex-wrap: wrap;
+    }
+
     &-block {
       display: flex;
       flex-direction: column;
