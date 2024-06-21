@@ -1,41 +1,42 @@
 import './ExchangeRates.scss';
 import bank from '@assets/images/bank.svg';
 
-const ExchangeRates = () => {
+import { useSelector } from 'react-redux';
+import { RootState } from '@store/store';
+import { useExchangeRates } from '@customHooks/useExchangeRates';
+
+const ExchangeRates: React.FC = () => {
+  const { rates, status, error } = useSelector((state: RootState) => state.exchangeRates);
+  useExchangeRates();
+
+  const renderRateValue = (rate: string | undefined) => {
+    if (status === 'loading' && !rate) {
+      return <span className="exchange-content__rates_rate loading">Loading...</span>;
+    }
+    if (error) {
+      return <span className="exchange-content__rates_rate error">Error</span>;
+    }
+    return <span className="exchange-content__rates_rate">{rate || 'N/A'}</span>;
+  };
+
   return (
     <section className="exchange">
       <div className="exchange-content">
         <div className="exchange-content__titles">
           <h3 className="exchange-content__titles_h3">Exchange rate in internet bank</h3>
-          <span className="exchange-content__titles_subtitle"> Update every 15 minutes, MSC 09.08.2022</span>
+          <span className="exchange-content__titles_subtitle">
+            Update every 15 minutes, MSC {new Date().toLocaleDateString()}
+          </span>
         </div>
         <span className="exchange-content__currency">Currency</span>
         <div className="exchange-content__rates">
           <div className="exchange-content__rates_grid">
-            <div className="exchange-content__rates_item">
-              <span className="exchange-content__rates_currency">USD:</span>
-              <span className="exchange-content__rates_rate">60.78</span>
-            </div>
-            <div className="exchange-content__rates_item">
-              <span className="exchange-content__rates_currency">CNY:</span>
-              <span className="exchange-content__rates_rate">9.08</span>
-            </div>
-            <div className="exchange-content__rates_item">
-              <span className="exchange-content__rates_currency">CHF:</span>
-              <span className="exchange-content__rates_rate">64.78</span>
-            </div>
-            <div className="exchange-content__rates_item">
-              <span className="exchange-content__rates_currency">USD:</span>
-              <span className="exchange-content__rates_rate">60.78</span>
-            </div>
-            <div className="exchange-content__rates_item">
-              <span className="exchange-content__rates_currency">JPY:</span>
-              <span className="exchange-content__rates_rate">0.46</span>
-            </div>
-            <div className="exchange-content__rates_item">
-              <span className="exchange-content__rates_currency">TRY:</span>
-              <span className="exchange-content__rates_rate">3.39</span>
-            </div>
+            {['USD', 'EUR', 'GBP', 'JPY', 'MXN', 'CNH'].map((currency) => (
+              <div key={currency} className="exchange-content__rates_item">
+                <span className="exchange-content__rates_currency">{currency}:</span>
+                {renderRateValue(rates[currency])}
+              </div>
+            ))}
           </div>
           <img src={bank} alt="Bank" className="exchange-content__rates_image" />
         </div>
