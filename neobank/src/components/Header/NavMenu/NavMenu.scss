@@ -1,0 +1,35 @@
+@import "@styles/mixins.scss";
+@import "@styles/variables";
+.navmenu {
+  @include ubuntu-bold;
+  font-size: 16px;
+  line-height: 112%;
+  letter-spacing: 0.02em;
+  color: #1d1929;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.navmenu__links {
+  display: flex;
+  width: 100%;
+  max-width: 440px;
+  list-style-type: none;
+  justify-content: space-between;
+
+  @media (max-width: 440px) {
+    flex-direction: column;
+    padding-left: 0;
+  }
+
+  &_link {
+    text-decoration: none;
+    color: inherit;
+    transition: color 0.3s;
+
+    &:hover {
+      color: $link-hover;
+    }
+  }
+}

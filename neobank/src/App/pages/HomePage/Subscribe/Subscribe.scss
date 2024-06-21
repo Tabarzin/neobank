@@ -1,0 +1,85 @@
+@import "@styles/mixins";
+@import "@styles/variables";
+
+.subscribe {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__support {
+    @include ubuntu-bold;
+    font-size: 24px;
+    line-height: 147%;
+    letter-spacing: 0.02em;
+    text-align: center;
+    color: #eb801d;
+    text-decoration: none;
+  }
+
+  &__h3 {
+    @include ubuntu-bold;
+    font-size: 30px;
+    line-height: 147%;
+    letter-spacing: 0.02em;
+    text-align: center;
+    color: $black;
+    max-width: 420px;
+  }
+
+  &__form {
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 10px 20px 0 rgba(54, 58, 120, 0.1);
+    background: $white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+    @media (max-width: 500px) {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+
+  &__input {
+    @include nunito-regular;
+    font-size: 20px;
+    line-height: 147%;
+    letter-spacing: 0.02em;
+    color: #9092b0;
+    border: none;
+    background: url("../../../../assets/images/email.svg") left;
+    background-repeat: no-repeat;
+    padding-left: 35px;
+
+    @media (max-width: 340px) {
+      font-size: 15px;
+    }
+  }
+
+  &__button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+    border: none;
+    width: 161px;
+    height: 44px;
+    background: #686df1;
+    color: $white;
+    @include ubuntu-bold;
+    font-size: 16px;
+    line-height: 127%;
+    color: #fff;
+    cursor: pointer;
+    transition:
+      transform 0.3s ease,
+      text-shadow 0.3s ease;
+
+    &:hover {
+      transform: scale(1.1);
+      text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    }
+  }
+}

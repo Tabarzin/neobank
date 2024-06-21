@@ -1,0 +1,97 @@
+@import "@styles/mixins";
+@import "@styles/variables";
+
+.exchange-content {
+  max-width: 1300px;
+  margin: 0 auto;
+  box-shadow:
+    0 2px 4px 0 rgba(187, 187, 187, 0.2),
+    0 0 4px 0 rgba(0, 0, 0, 0.08);
+  background: linear-gradient(rgba(244, 244, 244, 0.9), rgba(178, 178, 178, 0.8));
+
+  border-radius: 28px;
+  padding: 30px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  @media (max-width: 5520px) {
+    gap: 15px;
+  }
+
+  &__titles {
+    display: flex;
+    @include ubuntu-medium;
+    color: $black;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+
+    &_h3 {
+      font-size: 30px;
+      line-height: 167%;
+    }
+
+    &_subtitle {
+      @include ubuntu-medium;
+      font-size: 16px;
+      line-height: 312%;
+    }
+  }
+
+  &__currency {
+    @include ubuntu-medium;
+
+    font-size: 20px;
+    line-height: 250%;
+  }
+  &__link {
+    @include ubuntu-bold;
+    font-size: 20px;
+    line-height: 112%;
+    letter-spacing: 0.02em;
+    color: #fff;
+    text-decoration: none;
+  }
+}
+
+.exchange-content__rates {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  @include ubuntu-bold;
+  font-size: 20px;
+  line-height: 112%;
+  letter-spacing: 0.02em;
+
+  @media (max-width: 560px) {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  &_grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+
+    @media (max-width: 400px) {
+      grid-template-columns: repeat(1, 1fr);
+    }
+  }
+
+  &_item {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+  }
+
+  &_currency {
+    color: #808080;
+  }
+
+  &_rate {
+    color: $black;
+  }
+}

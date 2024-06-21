@@ -1,0 +1,36 @@
+@import "./variables.scss";
+
+/* Global styles */
+body,
+html {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.main-background {
+  background-color: $background;
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+}
+
+.footer-background {
+  background-color: $footer-background;
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+}
+
+.content {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 20px;
+  color: #000;
+}

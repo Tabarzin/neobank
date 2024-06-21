@@ -1,3 +1,8 @@
+@import "@styles/variables.scss";
+@import "@styles/normalize.css";
+@import "@styles/mixins.scss";
+
 .app {
-  background-color: lightblue;
+  //   background-color: $background;
+  background-color: red;
 }
