@@ -6,6 +6,7 @@ import Map from './Map/Map';
 import './HomePage.scss';
 import Subscribe from './Subscribe/Subscribe';
 import Footer from '@components/Footer/Footer';
+import News from './News/News';
 
 const HomePage = () => {
   return (
@@ -16,6 +17,7 @@ const HomePage = () => {
         <Features />
         <ExchangeRates />
         <Map />
+        <News />
         <Subscribe />
         <Footer />
       </main>
