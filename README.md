@@ -1,5 +1,16 @@
 # Neobank
 
+## Как развернуть проект локально:
+
+```bash
+
+- git clone git@github.com:Tabarzin/neobank.git
+- cd neobank
+- yarn install
+- yarn dev
+
+```
+
 ## Module 1
 
 ### Структура проекта
