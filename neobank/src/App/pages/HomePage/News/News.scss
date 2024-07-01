@@ -1,0 +1,84 @@
+@import "@styles/mixins";
+@import "@styles/variables";
+
+.news {
+  display: flex;
+  flex-direction: column;
+  max-width: 1300px;
+  margin: 0 auto;
+  @include ubuntu-medium;
+  color: $black;
+  text-align: center;
+  width: 100%;
+
+  &__h3 {
+    font-size: 30px;
+    line-height: 167%;
+    padding: 10px;
+  }
+
+  &__subtitle {
+    font-size: 16px;
+    padding: 10px;
+    line-height: 312%;
+  }
+}
+
+.slider-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 20px;
+  padding: 10px;
+
+  @media (max-width: 1320px) {
+    justify-content: center;
+  }
+
+  @media (max-width: 1320px) {
+    justify-content: flex-start;
+  }
+
+  &_button {
+    border: none;
+    padding: 8px;
+    width: 64px;
+    height: 64px;
+    background-color: #007bff;
+    color: white;
+    border-radius: 50%;
+    cursor: pointer;
+
+    &:disabled {
+      background-color: $white;
+      border: 1px solid #003cff;
+      cursor: not-allowed;
+    }
+  }
+}
+
+.slider {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+
+.slider-container {
+  display: flex;
+  transition: transform 0.3s ease;
+  will-change: transform;
+}
+
+.slider-item {
+  flex: 0 0 100%;
+  padding: 0 15px;
+  box-sizing: border-box;
+
+  @media (min-width: 768px) {
+    flex: 0 0 50%;
+  }
+
+  @media (min-width: 1200px) {
+    flex: 0 0 33.333%;
+  }
+}

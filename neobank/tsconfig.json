@@ -8,6 +8,7 @@
 
     "moduleResolution": "node",
     "allowImportingTsExtensions": true,
+    "allowSyntheticDefaultImports": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
@@ -26,7 +27,9 @@
       "@assets/*": ["src/assets/*"],
       "@configs/*": ["src/configs/*"],
       "@styles/*": ["src/styles/*"],
-      "@utils/*": ["src/utils/*"]
+      "@utils/*": ["src/utils/*"],
+      "@store/*": ["src/store/*"],
+      "@customHooks/*": ["src/customHooks/*"]
     }
   },
   "include": ["src"],
