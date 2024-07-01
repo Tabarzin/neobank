@@ -6,7 +6,7 @@ const Footer = () => {
     <footer className="footer">
       <div className="footer-content">
         <div className="footer-content__contacts">
-          <img src={logo} alt="Neoflex Logo" />
+          <img src={logo} alt="Neoflex Logo" className='footer-content__logo'/>
           <div className="footer-content__contacts-block">
             <a href="tel:+74959842513" className="footer-content__contacts_tel">
               +7 (495) 984 25 13
