@@ -1,15 +1,26 @@
-import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useCallback } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
-import { fetchNewsStart, fetchNewsSuccess, fetchNewsFailure, NewsArticle } from '@store/newsSlice';
+import {
+  fetchNewsStart,
+  fetchNewsSuccess,
+  fetchNewsFailure,
+  NewsArticle,
+  selectAllNews,
+  selectNewsStatus,
+  selectNewsError,
+} from '@store/newsSlice';
 
 const API_KEY = '7c5a94e9fa3041fb8745c31cd85d8835';
 const API_URL = `https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=${API_KEY}`;
 
 export const useNews = () => {
   const dispatch = useDispatch();
+  const news = useSelector(selectAllNews);
+  const status = useSelector(selectNewsStatus);
+  const error = useSelector(selectNewsError);
 
-  const fetchNews = async () => {
+  const fetchNews = useCallback(async () => {
     dispatch(fetchNewsStart());
     try {
       const response = await axios.get(API_URL);
@@ -23,11 +34,7 @@ export const useNews = () => {
     } catch (error) {
       dispatch(fetchNewsFailure(error instanceof Error ? error.message : 'An error occurred'));
     }
-  };
+  }, [dispatch]);
 
-  useEffect(() => {
-    fetchNews();
-  }, []);
-
-  return { fetchNews };
+  return { news, status, error, fetchNews };
 };
