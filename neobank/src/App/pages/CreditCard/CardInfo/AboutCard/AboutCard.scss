@@ -1,0 +1,73 @@
+@import "@styles/mixins.scss";
+@import "@styles/variables";
+
+.about-card {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  margin-bottom: 50px;
+
+  &__card {
+    &_text-l {
+    }
+
+    &_text-l {
+    }
+  }
+}
+
+grid {
+}
+
+@media (max-width: 1250px) {
+  .about-card {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+  .card5 {
+    grid-column: 1/5;
+  }
+}
+
+@media (max-width: 1030px) {
+  .about-card {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 20px;
+  }
+  .card1,
+  .card2,
+  .card3 {
+    grid-column: span 2;
+  }
+  .card4,
+  .card5 {
+    grid-column: span 3;
+  }
+}
+
+@media (max-width: 780px) {
+  .about-card {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 20px;
+  }
+  .card1,
+  .card2,
+  .card3,
+  .card4 {
+    grid-column: span 3;
+  }
+  .card5 {
+    grid-column: span 6;
+  }
+}
+
+@media (max-width: 403px) {
+  .card1,
+  .card2,
+  .card3,
+  .card4,
+  .card5 {
+    grid-column: span 6;
+  }
+}
