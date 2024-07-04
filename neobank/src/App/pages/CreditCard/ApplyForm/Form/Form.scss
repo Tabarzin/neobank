@@ -1,0 +1,6 @@
+@import "@styles/mixins.scss";
+@import "@styles/variables";
+
+.form-h4 {
+  @include h4;
+}

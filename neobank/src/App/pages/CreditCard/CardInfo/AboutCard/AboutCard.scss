@@ -13,18 +13,12 @@
 
     &_text-l {
       @include ubuntu-bold;
-      font-size: 30px;
-      line-height: 147%;
-      letter-spacing: 0.02em;
-      color: #000;
+      @include h3;
     }
 
     &_text-s {
       @include ubuntu-medium;
-      font-size: 16px;
-      line-height: 100%;
-      letter-spacing: 0.02em;
-      color: #000;
+      @include p-primary;
     }
   }
 }

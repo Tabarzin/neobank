@@ -8,3 +8,56 @@
   max-width: 1300px;
   margin: 0 auto;
 }
+
+.get-card-title {
+  @include h3;
+  text-align: center;
+}
+
+.get-card-blocks {
+  display: flex;
+  gap: 90px;
+}
+.get-card-block {
+  display: flex;
+  flex-direction: column;
+}
+.get-card_circle-line {
+  display: flex;
+}
+
+.get-card-wrapper {
+  display: flex;
+  align-items: center;
+  width: 100%;
+
+  .get-card-circle {
+    border-radius: 50px;
+    width: 48px;
+    height: 48px;
+    background: #d9d9d9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    @include ubuntu-bold;
+
+    font-size: 20px;
+    line-height: 147%;
+    text-align: center;
+    color: $black;
+  }
+
+  .horizontal-line {
+    flex-grow: 1;
+    height: 2px;
+    background-color: rgba(128, 128, 128, 0.2);
+    width: 250px;
+
+    margin-left: 25px;
+  }
+}
+.get-card_p {
+  @include p-primary;
+  text-align: center;
+}

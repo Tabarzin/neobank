@@ -9,19 +9,21 @@ import HomePage from './pages/HomePage';
 
 const App = () => {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/card" element={<CreditCard />} />
-        <Route path="/credit-card" element={<CreditCard />}>
-          <Route index element={<AboutCard />} />
-          <Route path="about" element={<AboutCard />} />
-          <Route path="rates" element={<RatesConditions />} />
-          <Route path="cashback" element={<Cashback />} />
-          <Route path="faq" element={<FAQ />} />
-        </Route>
-      </Routes>
-    </BrowserRouter>
+    <div className="app">
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/card" element={<CreditCard />} />
+          <Route path="/credit-card" element={<CreditCard />}>
+            <Route index element={<AboutCard />} />
+            <Route path="about" element={<AboutCard />} />
+            <Route path="rates" element={<RatesConditions />} />
+            <Route path="cashback" element={<Cashback />} />
+            <Route path="faq" element={<FAQ />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
+    </div>
   );
 };
 
