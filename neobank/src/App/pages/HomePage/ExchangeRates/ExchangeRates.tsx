@@ -1,6 +1,5 @@
 import './ExchangeRates.scss';
 import bank from '@assets/images/bank.svg';
-
 import { useSelector } from 'react-redux';
 import { RootState } from '@store/store';
 import { useExchangeRates } from '@customHooks/useExchangeRates';

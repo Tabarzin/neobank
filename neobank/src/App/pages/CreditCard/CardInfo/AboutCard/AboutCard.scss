@@ -3,46 +3,40 @@
 
 .about-card {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 40px;
   margin-bottom: 50px;
 
   &__card {
-    &_text-l {
-    }
+    border-radius: 28px;
+    padding: 32px;
 
     &_text-l {
+      @include ubuntu-bold;
+      font-size: 30px;
+      line-height: 147%;
+      letter-spacing: 0.02em;
+      color: #000;
+    }
+
+    &_text-s {
+      @include ubuntu-medium;
+      font-size: 16px;
+      line-height: 100%;
+      letter-spacing: 0.02em;
+      color: #000;
     }
   }
 }
 
-grid {
+.card1,
+.card2,
+.card3 {
+  grid-column: span 2;
 }
-
-@media (max-width: 1250px) {
-  .about-card {
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-  }
-  .card5 {
-    grid-column: 1/5;
-  }
-}
-
-@media (max-width: 1030px) {
-  .about-card {
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    gap: 20px;
-  }
-  .card1,
-  .card2,
-  .card3 {
-    grid-column: span 2;
-  }
-  .card4,
-  .card5 {
-    grid-column: span 3;
-  }
+.card4,
+.card5 {
+  grid-column: span 3;
 }
 
 @media (max-width: 780px) {
@@ -70,4 +64,21 @@ grid {
   .card5 {
     grid-column: span 6;
   }
+}
+
+.card1,
+.card3,
+.card5 {
+  box-shadow:
+    0 2px 4px 0 rgba(0, 0, 0, 0.2),
+    0 0 8px 0 rgba(0, 0, 0, 0.08);
+  background: #eaecee;
+}
+
+.card2,
+.card4 {
+  box-shadow:
+    0 2px 4px 0 rgba(0, 0, 0, 0.2),
+    0 0 8px 0 rgba(0, 0, 0, 0.08);
+  background: rgba(127, 146, 172, 0.7);
 }
