@@ -29,7 +29,11 @@
     transition: color 0.3s;
 
     &:hover {
-      color: $link-hover;
+      color: $nav-link-active;
     }
   }
+}
+
+.navmenu__links_link--active {
+  color: $nav-link-active;
 }

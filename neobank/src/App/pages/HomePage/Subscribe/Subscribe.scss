@@ -16,6 +16,10 @@
     text-decoration: none;
   }
 
+  &__message {
+    @include ubuntu-regular;
+  }
+
   &__h3 {
     @include ubuntu-bold;
     font-size: 30px;
@@ -36,6 +40,10 @@
     align-items: center;
     justify-content: center;
     gap: 10px;
+
+    &__message {
+      @include ubuntu-regular;
+    }
 
     @media (max-width: 500px) {
       flex-direction: column;

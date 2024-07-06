@@ -1,0 +1,80 @@
+@import "@styles/mixins.scss";
+@import "@styles/variables";
+
+.apply-form-content {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  max-width: 1300px;
+  margin: 0 auto;
+  border-radius: 28px;
+  box-shadow:
+    0 2px 4px 0 rgba(0, 0, 0, 0.2),
+    0 0 8px 0 rgba(0, 0, 0, 0.08);
+  background: $white;
+  padding: 30px;
+}
+.apply-slider-amount-block {
+  display: flex;
+}
+
+.apply-slider-block {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}
+.apply-slider-text {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.apply-slider-title {
+  @include ubuntu-bold;
+  @include h3;
+}
+
+.apply-slider-p {
+  @include p-primary;
+}
+.apply-slider {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  border: 1px solid #5b35d5;
+  border-radius: 10px;
+  max-width: 580px;
+}
+.apply-slider-line {
+  width: 100%;
+  height: 2px;
+}
+.apply-slider-sums {
+  display: flex;
+  justify-content: space-between;
+  @include ubuntu-medium;
+  font-size: 16px;
+  line-height: 100%;
+  color: #786d6d;
+}
+
+.divider {
+  border: 1px dashed rgba(128, 128, 128, 0.4);
+  width: 232px;
+  height: 0px;
+  transform: rotate(90deg);
+  align-self: center;
+}
+.amount-block {
+  display: flex;
+  flex-direction: column;
+  &-h4 {
+    @include h4;
+  }
+}
+
+.horizontal-line {
+  height: 2px;
+  background-color: rgba(128, 128, 128, 0.2);
+  width: 250px;
+}

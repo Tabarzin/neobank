@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-interface NewsArticle {
+export interface NewsArticle {
   urlToImage: string;
   title: string;
   url: string;

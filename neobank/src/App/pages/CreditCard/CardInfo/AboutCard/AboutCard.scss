@@ -1,0 +1,78 @@
+@import "@styles/mixins.scss";
+@import "@styles/variables";
+
+.about-card {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 40px;
+  margin-bottom: 50px;
+
+  &__card {
+    border-radius: 28px;
+    padding: 32px;
+
+    &_text-l {
+      @include ubuntu-bold;
+      @include h3;
+    }
+
+    &_text-s {
+      @include ubuntu-medium;
+      @include p-primary;
+    }
+  }
+}
+
+.card1,
+.card2,
+.card3 {
+  grid-column: span 2;
+}
+.card4,
+.card5 {
+  grid-column: span 3;
+}
+
+@media (max-width: 780px) {
+  .about-card {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 20px;
+  }
+  .card1,
+  .card2,
+  .card3,
+  .card4 {
+    grid-column: span 3;
+  }
+  .card5 {
+    grid-column: span 6;
+  }
+}
+
+@media (max-width: 403px) {
+  .card1,
+  .card2,
+  .card3,
+  .card4,
+  .card5 {
+    grid-column: span 6;
+  }
+}
+
+.card1,
+.card3,
+.card5 {
+  box-shadow:
+    0 2px 4px 0 rgba(0, 0, 0, 0.2),
+    0 0 8px 0 rgba(0, 0, 0, 0.08);
+  background: #eaecee;
+}
+
+.card2,
+.card4 {
+  box-shadow:
+    0 2px 4px 0 rgba(0, 0, 0, 0.2),
+    0 0 8px 0 rgba(0, 0, 0, 0.08);
+  background: rgba(127, 146, 172, 0.7);
+}

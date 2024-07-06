@@ -1,4 +1,5 @@
 import './Button.scss';
+import classNames from 'classnames';
 
 interface ButtonProps {
   children: React.ReactNode;
@@ -8,9 +9,9 @@ interface ButtonProps {
   disabled?: boolean;
 }
 
-const Button: React.FC<ButtonProps> = ({ children, onClick, type = 'button', disabled }) => {
+const Button: React.FC<ButtonProps> = ({ children, onClick, type = 'button', className, disabled }) => {
   return (
-    <button type={type} onClick={onClick} className="button" disabled={disabled}>
+    <button type={type} onClick={onClick} className={classNames('button', className)} disabled={disabled}>
       {children}
     </button>
   );

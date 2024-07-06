@@ -45,3 +45,27 @@
   font-weight: 400;
   font-style: normal;
 }
+
+/* ==== STYLES === */
+
+@mixin h3 {
+  @include ubuntu-bold;
+  font-size: 30px;
+  line-height: 147%;
+  color: $black;
+}
+
+@mixin h4 {
+  @include ubuntu-bold;
+  font-size: 20px;
+  line-height: 100%;
+  color: $black;
+}
+
+@mixin p-primary {
+  @include ubuntu-medium;
+  font-size: 16px;
+  line-height: 100%;
+  letter-spacing: 0.02em;
+  color: $black;
+}
