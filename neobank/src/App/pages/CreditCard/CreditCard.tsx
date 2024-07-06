@@ -1,4 +1,6 @@
+import Footer from '@/components/Footer/Footer';
 import Header from '@components/Header';
+import ApplyFrom from './ApplyForm/ApplyForm';
 import CardInfo from './CardInfo/CardInfo';
 import './CreditCard.scss';
 import CreditCardHero from './CreditCardHero/CreditCardHero';
@@ -12,6 +14,8 @@ const CreditCard: React.FC = () => {
         <CreditCardHero />
         <CardInfo />
         <GetCard />
+        <ApplyFrom />
+        <Footer />
       </div>
     </div>
   );
