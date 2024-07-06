@@ -1,0 +1,41 @@
+@import "@styles/mixins.scss";
+@import "@styles/variables";
+
+.cashback-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, auto);
+  padding: 10px;
+  gap: 40px;
+
+  &-item {
+    padding: 30px;
+    border-radius: 28px;
+
+    &__text-l {
+      @include ubuntu-bold;
+      font-size: 36px;
+      line-height: 147%;
+      color: $black;
+    }
+
+    &__text-s {
+      @include p-primary;
+      color: rgba(67, 67, 67, 0.9);
+    }
+  }
+}
+
+.dark {
+  box-shadow:
+    0 2px 4px 0 rgba(0, 0, 0, 0.2),
+    0 0 8px 0 rgba(0, 0, 0, 0.08);
+  background: rgba(136, 179, 184, 0.6);
+}
+
+.light {
+  box-shadow:
+    0 2px 4px 0 rgba(0, 0, 0, 0.2),
+    0 0 8px 0 rgba(0, 0, 0, 0.08);
+  background: #eaecee;
+}
