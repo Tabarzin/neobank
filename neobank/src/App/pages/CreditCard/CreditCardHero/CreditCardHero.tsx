@@ -1,8 +1,15 @@
 import Button from '@components/Button/Button';
 import './CreditCardHero.scss';
+import { useNavigate } from 'react-router-dom';
 import creditCard from '@assets/images/credit-card_cardImage1.svg';
 
-const CreditCardHero = () => {
+const CreditCardHero: React.FC = () => {
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate('#credit-card-form');
+  };
+
   return (
     <section className="credit-card-hero-content">
       <div className="credit-card-hero">
@@ -26,7 +33,7 @@ const CreditCardHero = () => {
               <span className="conditions-item-s">Card service is free</span>
             </div>
           </div>
-          <Button>Apply for card</Button>
+          <Button onClick={handleClick}>Apply for card</Button>
         </div>
         <img src={creditCard} alt="Credit Card" />
       </div>

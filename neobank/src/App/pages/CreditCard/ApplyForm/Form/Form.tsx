@@ -1,5 +1,7 @@
 import Button from '@components/Button/Button';
+import { useRef, useEffect } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
+import { useLocation } from 'react-router-dom';
 import './Form.scss';
 
 interface FormInputs {
@@ -17,7 +19,7 @@ const Form: React.FC = () => {
   const {
     register,
     handleSubmit,
-    formState: { errors, dirtyFields, isValid },
+    formState: { errors, dirtyFields },
   } = useForm<FormInputs>({
     mode: 'onChange',
   });
@@ -26,8 +28,17 @@ const Form: React.FC = () => {
     console.log(data);
   };
 
+  const formRef = useRef<HTMLDivElement | null>(null);
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.hash === '#credit-card-form' && formRef.current) {
+      formRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
+  }, [location]);
+
   return (
-    <div role="form" aria-label="Contact information">
+    <div ref={formRef} id="credit-card-form" role="form" aria-label="Contact information">
       <h4 className="form-h4">Contact information</h4>
       <form className="form" onSubmit={handleSubmit(onSubmit)}>
         <div className="form-grid">
