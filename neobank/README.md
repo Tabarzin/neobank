@@ -37,7 +37,7 @@
 
 ## Module 3
 
-#### В блоке support на homepage реализовал POST: /email.
+#### В блоке support реализовал POST: /email.
 
 После успешной отправки запроса, вместо input показывается текст "You are already subscribed to the bank's newsletter".
 Этот текст сохраняется при перезагрузке страницы.
