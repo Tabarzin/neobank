@@ -1,2 +1,52 @@
 @import "@styles/mixins.scss";
 @import "@styles/variables";
+
+.faq-group-title {
+  @include h3;
+}
+
+.faq {
+  width: 100%;
+  max-width: 1300px;
+  margin: 0 auto;
+}
+
+.faq-item {
+  border: 1px solid #e2e8f0;
+  padding: 30px;
+  margin: 0 20px 0 20px;
+  overflow: hidden;
+}
+
+.faq-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: #f5f5f5;
+  }
+}
+
+.faq-question {
+  @include p-primary;
+}
+
+.faq-answer {
+  @include ubuntu-regular;
+  font-size: 16px;
+  line-height: 147%;
+  color: #7b7454;
+}
+
+.faq-icon {
+  font-size: 12px;
+}
+
+.faq-content {
+  padding: 15px;
+}
