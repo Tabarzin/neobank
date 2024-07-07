@@ -37,6 +37,10 @@ const Form: React.FC = () => {
     }
   }, [location]);
 
+  const trimWhitespace = (event: React.FocusEvent<HTMLInputElement>) => {
+    event.target.value = event.target.value.trim();
+  };
+
   return (
     <div ref={formRef} id="credit-card-form" role="form" aria-label="Contact information">
       <h4 className="form-h4">Contact information</h4>
@@ -51,6 +55,7 @@ const Form: React.FC = () => {
               className={`form-input ${errors.lastname ? 'error' : ''} ${dirtyFields.lastname && !errors.lastname ? 'success' : ''}`}
               {...register('lastname', { required: 'Enter your last name' })}
               placeholder="For example Doe"
+              onBlur={trimWhitespace}
             />
             {errors.lastname && <p className="error-message">{errors.lastname.message}</p>}
           </div>
@@ -62,6 +67,7 @@ const Form: React.FC = () => {
               className={`form-input ${errors.firstname ? 'error' : ''} ${dirtyFields.firstname && !errors.firstname ? 'success' : ''}`}
               {...register('firstname', { required: 'Enter your first name' })}
               placeholder="For example John"
+              onBlur={trimWhitespace}
             />
             {errors.firstname && <p className="error-message">{errors.firstname.message}</p>}
           </div>
@@ -96,6 +102,7 @@ const Form: React.FC = () => {
                 },
               })}
               placeholder="test@gmail.com"
+              onBlur={trimWhitespace}
             />
             {errors.email && <p className="error-message">{errors.email.message}</p>}
           </div>
@@ -106,7 +113,21 @@ const Form: React.FC = () => {
             <input
               className={`form-input ${errors.birth ? 'error' : ''} ${dirtyFields.birth && !errors.birth ? 'success' : ''}`}
               type="date"
-              {...register('birth', { required: 'Incorrect date of birth' })}
+              {...register('birth', {
+                required: 'Date of birth is required',
+                validate: (value) => {
+                  const birthDate = new Date(value);
+                  const today = new Date();
+                  let age = today.getFullYear() - birthDate.getFullYear();
+                  const monthDiff = today.getMonth() - birthDate.getMonth();
+
+                  if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
+                    age--;
+                  }
+
+                  return age >= 18 || 'You must be at least 18 years old';
+                },
+              })}
             />
             {errors.birth && <p className="error-message">{errors.birth.message}</p>}
           </div>
@@ -124,6 +145,7 @@ const Form: React.FC = () => {
                 },
               })}
               placeholder="0000"
+              onBlur={trimWhitespace}
             />
             {errors.passport_series && <p className="error-message">{errors.passport_series.message}</p>}
           </div>
@@ -141,6 +163,7 @@ const Form: React.FC = () => {
                 },
               })}
               placeholder="000000"
+              onBlur={trimWhitespace}
             />
             {errors.passport_num && <p className="error-message">{errors.passport_num.message}</p>}
           </div>

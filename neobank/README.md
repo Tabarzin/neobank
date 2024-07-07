@@ -41,4 +41,5 @@
 - После успешной отправки запроса, вместо input показывается текст "You are already subscribed to the bank's newsletter".
   Этот текст сохраняется при перезагрузке страницы.
 - При клике на кнопку "Apply for card", происходит плавное перемещение к форме.
-- Добавил tooltips
+- Добавил tooltips, табы-вкладки.
+- Сделал форму Prescoring с помощью React-hook-form.
