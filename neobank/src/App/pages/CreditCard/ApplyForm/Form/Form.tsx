@@ -26,23 +26,16 @@ const Form: React.FC = () => {
     mode: 'onChange',
   });
 
-  // const onSubmit: SubmitHandler<FormInputs> = (data) => {
-  //   console.log(data);
-  // };
-
   const navigate = useNavigate();
 
-  const onSubmit = async (data) => {
+  const onSubmit = async (data: FormData) => {
     setIsLoading(true);
     try {
-      // Perform any async operations here, e.g., API calls
-      await new Promise((resolve) => setTimeout(resolve, 1000)); // Simulating an API call
+      await new Promise((resolve) => setTimeout(resolve, 1000));
 
-      // If everything is successful, navigate to /application
       navigate('/application');
     } catch (error) {
       console.error('Error:', error);
-      // Handle error (e.g., show error message to user)
     } finally {
       setIsLoading(false);
     }
@@ -84,6 +77,7 @@ const Form: React.FC = () => {
               Your first name <span className="redstar">*</span>
             </p>
             <input
+              type="text"
               className={`form-input ${errors.firstname ? 'error' : ''} ${dirtyFields.firstname && !errors.firstname ? 'success' : ''}`}
               {...register('firstname', { required: 'Enter your first name' })}
               placeholder="For example John"
@@ -93,7 +87,12 @@ const Form: React.FC = () => {
           </div>
           <div className="grid-item">
             <p className="form-p">Your patronymic </p>
-            <input className="form-input" {...register('patronimic')} placeholder="For example Viktorovich" />
+            <input
+              type="text"
+              className="form-input"
+              {...register('patronimic')}
+              placeholder="For example Viktorovich"
+            />
           </div>
           <div className="grid-item">
             <p className="form-p">
@@ -113,6 +112,7 @@ const Form: React.FC = () => {
               Your email <span className="redstar">*</span>
             </p>
             <input
+              type="email"
               className={`form-input ${errors.email ? 'error' : ''} ${dirtyFields.email && !errors.email ? 'success' : ''}`}
               {...register('email', {
                 required: 'Email is required',
