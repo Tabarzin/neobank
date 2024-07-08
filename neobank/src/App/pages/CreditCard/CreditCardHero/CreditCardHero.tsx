@@ -42,7 +42,7 @@ const CreditCardHero: React.FC = () => {
           </div>
           <Button onClick={handleClick}>Apply for card</Button>
         </div>
-        <img src={creditCard} alt="Credit Card" />
+        <img src={creditCard} alt="Credit Card" className="creditcard-img" />
       </div>
     </section>
   );
