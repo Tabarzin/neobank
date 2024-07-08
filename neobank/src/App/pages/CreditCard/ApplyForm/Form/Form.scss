@@ -24,6 +24,18 @@
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(2, auto);
   gap: 10px;
+
+  @media (max-width: 1270px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @media (max-width: 968px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: 656px) {
+    grid-template-columns: repeat(1, 1fr);
+  }
 }
 
 .form-p {
@@ -40,12 +52,15 @@
 .form-input {
   border: 1px solid rgba(128, 128, 128, 0.2);
   border-radius: 6px;
-  width: 300px;
+  width: 284px;
   height: 40px;
   background-color: #f9f5e3;
-  padding-left: 10px;
   background-repeat: no-repeat;
   background-position: calc(100% - 17px) center;
+
+  @media (max-width: 352px) {
+    width: 230px;
+  }
 
   &:focus {
     border-color: rgb(104, 87, 197);
