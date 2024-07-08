@@ -18,6 +18,11 @@
 .get-card-blocks {
   display: flex;
   gap: 90px;
+
+  @media (max-width: 1189px) {
+    flex-direction: column;
+    gap: 0;
+  }
 }
 .get-card-block {
   display: flex;
