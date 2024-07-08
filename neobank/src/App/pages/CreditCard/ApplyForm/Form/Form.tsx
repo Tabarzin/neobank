@@ -1,7 +1,8 @@
 import Button from '@components/Button/Button';
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect, useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
-import { useLocation } from 'react-router-dom';
+import { RotatingLines } from 'react-loader-spinner';
+import { useLocation, useNavigate } from 'react-router-dom';
 import './Form.scss';
 
 interface FormInputs {
@@ -16,6 +17,7 @@ interface FormInputs {
 }
 
 const Form: React.FC = () => {
+  const [isLoading, setIsLoading] = useState(false);
   const {
     register,
     handleSubmit,
@@ -24,8 +26,26 @@ const Form: React.FC = () => {
     mode: 'onChange',
   });
 
-  const onSubmit: SubmitHandler<FormInputs> = (data) => {
-    console.log(data);
+  // const onSubmit: SubmitHandler<FormInputs> = (data) => {
+  //   console.log(data);
+  // };
+
+  const navigate = useNavigate();
+
+  const onSubmit = async (data) => {
+    setIsLoading(true);
+    try {
+      // Perform any async operations here, e.g., API calls
+      await new Promise((resolve) => setTimeout(resolve, 1000)); // Simulating an API call
+
+      // If everything is successful, navigate to /application
+      navigate('/application');
+    } catch (error) {
+      console.error('Error:', error);
+      // Handle error (e.g., show error message to user)
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const formRef = useRef<HTMLDivElement | null>(null);
@@ -168,8 +188,25 @@ const Form: React.FC = () => {
             {errors.passport_num && <p className="error-message">{errors.passport_num.message}</p>}
           </div>
         </div>
-        <Button type="submit" className="form-button">
-          Continue
+        <Button type="submit" className="form-button" disabled={isLoading}>
+          {isLoading ? (
+            <>
+              <RotatingLines
+                visible={true}
+                height="20"
+                width="20"
+                color="black"
+                strokeWidth="5"
+                animationDuration="0.75"
+                ariaLabel="rotating-lines-loading"
+                wrapperStyle={{ display: 'inline-block', marginRight: '10px', verticalAlign: 'middle' }}
+                wrapperClass=""
+              />
+              Loading...
+            </>
+          ) : (
+            'Continue'
+          )}
         </Button>
       </form>
     </div>

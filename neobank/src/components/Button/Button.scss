@@ -2,6 +2,9 @@
 @import "@styles/variables";
 
 .button {
+  display: flex;
+  align-items: center;
+
   border-radius: 16px;
   border: none;
   padding: 16px;
@@ -26,5 +29,8 @@
     background: #7796c0;
     color: $white;
     border: none;
+  }
+  &:disabled {
+    background: #7796c0;
   }
 }
