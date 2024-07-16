@@ -1,8 +1,5 @@
 import Button from '@components/Button/Button';
-import { useRef, useEffect, useState } from 'react';
-import { useForm } from 'react-hook-form';
-import { RotatingLines } from 'react-loader-spinner';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { SubmitHandler, useForm } from 'react-hook-form';
 import './Form.scss';
 
 interface FormInputs {
@@ -17,45 +14,20 @@ interface FormInputs {
 }
 
 const Form: React.FC = () => {
-  const [isLoading, setIsLoading] = useState(false);
   const {
     register,
     handleSubmit,
-    formState: { errors, dirtyFields },
+    formState: { errors, dirtyFields, isValid },
   } = useForm<FormInputs>({
     mode: 'onChange',
   });
 
-  const navigate = useNavigate();
-
-  const onSubmit = async (data: FormData) => {
-    setIsLoading(true);
-    try {
-      await new Promise((resolve) => setTimeout(resolve, 1000));
-
-      navigate('/application');
-    } catch (error) {
-      console.error('Error:', error);
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
-  const formRef = useRef<HTMLDivElement | null>(null);
-  const location = useLocation();
-
-  useEffect(() => {
-    if (location.hash === '#credit-card-form' && formRef.current) {
-      formRef.current.scrollIntoView({ behavior: 'smooth' });
-    }
-  }, [location]);
-
-  const trimWhitespace = (event: React.FocusEvent<HTMLInputElement>) => {
-    event.target.value = event.target.value.trim();
+  const onSubmit: SubmitHandler<FormInputs> = (data) => {
+    console.log(data);
   };
 
   return (
-    <div ref={formRef} id="credit-card-form" role="form" aria-label="Contact information">
+    <div role="form" aria-label="Contact information">
       <h4 className="form-h4">Contact information</h4>
       <form className="form" onSubmit={handleSubmit(onSubmit)}>
         <div className="form-grid">
@@ -68,7 +40,6 @@ const Form: React.FC = () => {
               className={`form-input ${errors.lastname ? 'error' : ''} ${dirtyFields.lastname && !errors.lastname ? 'success' : ''}`}
               {...register('lastname', { required: 'Enter your last name' })}
               placeholder="For example Doe"
-              onBlur={trimWhitespace}
             />
             {errors.lastname && <p className="error-message">{errors.lastname.message}</p>}
           </div>
@@ -77,22 +48,15 @@ const Form: React.FC = () => {
               Your first name <span className="redstar">*</span>
             </p>
             <input
-              type="text"
               className={`form-input ${errors.firstname ? 'error' : ''} ${dirtyFields.firstname && !errors.firstname ? 'success' : ''}`}
               {...register('firstname', { required: 'Enter your first name' })}
               placeholder="For example John"
-              onBlur={trimWhitespace}
             />
             {errors.firstname && <p className="error-message">{errors.firstname.message}</p>}
           </div>
           <div className="grid-item">
             <p className="form-p">Your patronymic </p>
-            <input
-              type="text"
-              className="form-input"
-              {...register('patronimic')}
-              placeholder="For example Viktorovich"
-            />
+            <input className="form-input" {...register('patronimic')} placeholder="For example Viktorovich" />
           </div>
           <div className="grid-item">
             <p className="form-p">
@@ -112,7 +76,6 @@ const Form: React.FC = () => {
               Your email <span className="redstar">*</span>
             </p>
             <input
-              type="email"
               className={`form-input ${errors.email ? 'error' : ''} ${dirtyFields.email && !errors.email ? 'success' : ''}`}
               {...register('email', {
                 required: 'Email is required',
@@ -122,7 +85,6 @@ const Form: React.FC = () => {
                 },
               })}
               placeholder="test@gmail.com"
-              onBlur={trimWhitespace}
             />
             {errors.email && <p className="error-message">{errors.email.message}</p>}
           </div>
@@ -133,21 +95,7 @@ const Form: React.FC = () => {
             <input
               className={`form-input ${errors.birth ? 'error' : ''} ${dirtyFields.birth && !errors.birth ? 'success' : ''}`}
               type="date"
-              {...register('birth', {
-                required: 'Date of birth is required',
-                validate: (value) => {
-                  const birthDate = new Date(value);
-                  const today = new Date();
-                  let age = today.getFullYear() - birthDate.getFullYear();
-                  const monthDiff = today.getMonth() - birthDate.getMonth();
-
-                  if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
-                    age--;
-                  }
-
-                  return age >= 18 || 'You must be at least 18 years old';
-                },
-              })}
+              {...register('birth', { required: 'Incorrect date of birth' })}
             />
             {errors.birth && <p className="error-message">{errors.birth.message}</p>}
           </div>
@@ -165,7 +113,6 @@ const Form: React.FC = () => {
                 },
               })}
               placeholder="0000"
-              onBlur={trimWhitespace}
             />
             {errors.passport_series && <p className="error-message">{errors.passport_series.message}</p>}
           </div>
@@ -183,30 +130,12 @@ const Form: React.FC = () => {
                 },
               })}
               placeholder="000000"
-              onBlur={trimWhitespace}
             />
             {errors.passport_num && <p className="error-message">{errors.passport_num.message}</p>}
           </div>
         </div>
-        <Button type="submit" className="form-button" disabled={isLoading}>
-          {isLoading ? (
-            <>
-              <RotatingLines
-                visible={true}
-                height="20"
-                width="20"
-                color="black"
-                strokeWidth="5"
-                animationDuration="0.75"
-                ariaLabel="rotating-lines-loading"
-                wrapperStyle={{ display: 'inline-block', marginRight: '10px', verticalAlign: 'middle' }}
-                wrapperClass=""
-              />
-              Loading...
-            </>
-          ) : (
-            'Continue'
-          )}
+        <Button type="submit" className="form-button">
+          Continue
         </Button>
       </form>
     </div>

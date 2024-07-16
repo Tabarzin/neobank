@@ -24,10 +24,6 @@
   align-items: center;
   padding: 48px 32px;
 
-  @media (max-width: 785px) {
-    flex-wrap: wrap;
-  }
-
   &_h1 {
     @include ubuntu-bold;
     font-size: 48px;
@@ -58,11 +54,6 @@
   display: flex;
   max-width: 615px;
   gap: 80px;
-
-  @media (max-width: 470px) {
-    flex-wrap: wrap;
-    gap: 30px;
-  }
 }
 
 .conditions-item {
@@ -83,13 +74,5 @@
     line-height: 112%;
     letter-spacing: 0.02em;
     color: $black;
-  }
-}
-
-.creditcard-img {
-  @media (max-width: 785px) {
-    transform: rotate(-10deg);
-    width: 100%;
-    height: auto;
   }
 }

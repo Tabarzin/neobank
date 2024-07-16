@@ -27,9 +27,11 @@
   color: #7b7454;
   gap: 30px;
 
+
   @media (max-width: 400px) {
     flex-wrap: wrap;
   }
+
 
   &_link {
     @include ubuntu-medium;

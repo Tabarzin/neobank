@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import './FAQ.scss';
 
@@ -97,6 +98,7 @@ const FAQ: React.FC = () => {
       ))}
     </section>
   );
+
 };
 
 export default FAQ;
