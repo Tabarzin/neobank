@@ -42,8 +42,15 @@
   @include h3;
 }
 
-.apply-slider-p {
+.apply-slider-input {
   @include p-primary;
+  padding: 10px 0;
+  border: none;
+  width: 30%;
+
+  &:focus {
+    border: 1px solid #5b35d5;
+  }
 }
 .apply-slider {
   display: flex;

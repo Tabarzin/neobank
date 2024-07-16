@@ -1,7 +1,9 @@
+import { useState } from 'react';
 import './ApplyForm.scss';
 import Form from './Form/Form';
 
 const ApplyFrom: React.FC = () => {
+  const [amount, setAmount] = useState(150000);
   return (
     <section>
       <div className="apply-form-content">
@@ -12,10 +14,30 @@ const ApplyFrom: React.FC = () => {
               <p className="apply-slider-p"> Step 1 of 5</p>
             </div>
             <div className="apply-slider">
-              <p className="apply-slider-p">Select amount</p>
-              <p className="apply-slider-p">150 000</p>
+              <label htmlFor="range" className="apply-slider-input">
+                Select amount
+              </label>
+              <input
+                type="number"
+                id="sum"
+                name="sum"
+                min="15000"
+                max="600000"
+                value={amount}
+                onChange={(e) => setAmount(Number(e.target.value))}
+                className="apply-slider-input"
+              />
+
               <div>
-                <input className="apply-slider-line" type="range" min="15000" max="600000" value="150000"></input>
+                <input
+                  className="apply-slider-line"
+                  id="range"
+                  type="range"
+                  min="15000"
+                  max="600000"
+                  value={amount}
+                  onChange={(e) => setAmount(Number(e.target.value))}
+                />
               </div>
               <div className="apply-slider-sums">
                 <p>15 000</p>
@@ -26,7 +48,7 @@ const ApplyFrom: React.FC = () => {
           <div className="divider"></div>
           <div className="amount-block">
             <h4 className="amount-block-h4">You have chosen the amount</h4>
-            <p className="apply-slider-p">150 000 ₽</p>
+            <p className="apply-slider-p">{amount.toLocaleString()} ₽</p>
             <div className="horizontal-line"></div>
           </div>
         </div>
