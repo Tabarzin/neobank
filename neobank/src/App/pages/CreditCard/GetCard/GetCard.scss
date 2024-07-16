@@ -7,6 +7,7 @@
   flex-direction: column;
   max-width: 1300px;
   margin: 0 auto;
+  padding: 10px;
 }
 
 .get-card-title {
@@ -17,6 +18,11 @@
 .get-card-blocks {
   display: flex;
   gap: 90px;
+
+  @media (max-width: 1189px) {
+    flex-direction: column;
+    gap: 0;
+  }
 }
 .get-card-block {
   display: flex;
@@ -53,7 +59,6 @@
     height: 2px;
     background-color: rgba(128, 128, 128, 0.2);
     width: 250px;
-
     margin-left: 25px;
   }
 }
