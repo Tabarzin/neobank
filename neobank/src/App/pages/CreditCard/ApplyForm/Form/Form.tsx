@@ -1,6 +1,6 @@
 import Button from '@components/Button/Button';
 import { useRef, useEffect, useState } from 'react';
-import { SubmitHandler, useForm } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 import { RotatingLines } from 'react-loader-spinner';
 import { useLocation, useNavigate } from 'react-router-dom';
 import './Form.scss';
