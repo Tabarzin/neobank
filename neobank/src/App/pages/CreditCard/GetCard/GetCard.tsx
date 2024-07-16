@@ -18,7 +18,7 @@ const GetCard: React.FC = () => {
           <div className="get-card-block">
             <div className="get-card_circle-line">
               <div className="get-card-wrapper">
-                <div className="get-card-circle">1</div>
+                <div className="get-card-circle">2</div>
                 <div className="horizontal-line"></div>
               </div>
             </div>
@@ -27,7 +27,7 @@ const GetCard: React.FC = () => {
           <div className="get-card-block">
             <div className="get-card_circle-line">
               <div className="get-card-wrapper">
-                <div className="get-card-circle">1</div>
+                <div className="get-card-circle">3</div>
                 <div className="horizontal-line"></div>
               </div>
             </div>
