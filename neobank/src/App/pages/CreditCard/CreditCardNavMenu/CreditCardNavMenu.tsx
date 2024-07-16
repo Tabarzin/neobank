@@ -9,7 +9,6 @@ const CreditCardNavMenu: React.FC = () => {
         <li>
           <NavLink
             to="/credit-card/about"
-            end
             className={({ isActive }) =>
               `credit-card-navmenu__links_link ${isActive ? 'credit-card-navmenu__links_link--active' : ''}`
             }
