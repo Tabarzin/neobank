@@ -7,7 +7,7 @@ const NavMenu = () => {
       <ul className="navmenu__links">
         <li>
           <NavLink
-            to="/card"
+            to="/credit-card"
             className={({ isActive }) =>
               isActive ? 'navmenu__links_link navmenu__links_link--active' : 'navmenu__links_link'
             }
