@@ -1,3 +1,4 @@
+import NotFound from '@components/NotFound/NotFound';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.scss';
 import CreditCard from './pages/CreditCard';
@@ -21,6 +22,7 @@ const App = () => {
             <Route path="cashback" element={<Cashback />} />
             <Route path="faq" element={<FAQ />} />
           </Route>
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
     </div>
