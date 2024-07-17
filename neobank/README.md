@@ -11,6 +11,15 @@
 
 ```
 
+#### Docker
+
+```bash
+systemctl --user start docker-desktop
+docker-compose up --build // запускается основной контейнер.
+localhost:8080/swagger-ui/index.html // доступные API методы.
+
+```
+
 ## Module 1
 
 ### Структура проекта
