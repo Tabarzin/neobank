@@ -13,24 +13,55 @@ const Subscribe = () => {
     }
   }, []);
 
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   try {
+  //     if (process.env.NODE_ENV === 'development') {
+  //       await new Promise((resolve) =>
+  //         setTimeout(
+  //           () =>
+  //             resolve({
+  //               data: { message: 'Subscription successful' },
+  //             }),
+  //           500,
+  //         ),
+  //       );
+  //     } else {
+  //       await axios.post('/email', { email });
+  //     }
+  //     setSubscribed(true);
+  //     localStorage.setItem('isSubscribed', 'true');
+  //   } catch (error) {
+  //     console.error('Subscription failed', error);
+  //   }
+  // };
+
+  interface SubscriptionResponse {
+    data: {
+      message: string;
+    };
+  }
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      let response: SubscriptionResponse;
       if (process.env.NODE_ENV === 'development') {
-        await new Promise((resolve) =>
-          setTimeout(
-            () =>
-              resolve({
-                data: { message: 'Subscription successful' },
-              }),
-            500,
-          ),
+        // Simulated response for development
+        response = await new Promise((resolve) =>
+          setTimeout(() => resolve({ data: { message: 'Subscription successful' } }), 500),
         );
       } else {
-        await axios.post('/email', { email });
+        // Real API call for production
+        response = await axios.post('http://localhost:8080/email', { email });
       }
-      setSubscribed(true);
-      localStorage.setItem('isSubscribed', 'true');
+
+      if (response.data.message === 'Subscription successful') {
+        setSubscribed(true);
+        localStorage.setItem('isSubscribed', 'true');
+      } else {
+        throw new Error('Subscription failed');
+      }
     } catch (error) {
       console.error('Subscription failed', error);
     }
