@@ -8,7 +8,7 @@ import FAQ from './pages/CreditCard/CardInfo/FAQ/FAQ';
 import RatesConditions from './pages/CreditCard/CardInfo/RatesConditions/RatesConditions';
 import HomePage from './pages/HomePage';
 
-const App = () => {
+const App: React.FC = () => {
   return (
     <div className="app">
       <BrowserRouter>

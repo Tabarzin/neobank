@@ -1,11 +1,14 @@
+import { RootState } from '@store/store';
 import Button from '@components/Button/Button';
 import { useRef, useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { RotatingLines } from 'react-loader-spinner';
+import { useDispatch, useSelector } from 'react-redux';
 import { useLocation, useNavigate } from 'react-router-dom';
 import './ApplyForm.scss';
+import { showLoanOffers } from '@store/loanApplicationSlice';
 
-interface FormInputs {
+export interface FormInputs {
   lastname: string;
   firstname: string;
   patronimic: string;
@@ -17,6 +20,8 @@ interface FormInputs {
 }
 
 const ApplyForm: React.FC = () => {
+  const dispatch = useDispatch();
+  const { formData, isFormValid } = useSelector((state: RootState) => state.loanApplication);
   const [amount, setAmount] = useState(150000);
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
@@ -63,6 +68,8 @@ const ApplyForm: React.FC = () => {
       if (!response.ok) {
         throw new Error('Network response was not ok');
       }
+
+      dispatch(showLoanOffers());
 
       //navigate('/application');  // отключил временно, чтобы не было перехода на несуществующую страницу
     } catch (error) {
@@ -125,7 +132,13 @@ const ApplyForm: React.FC = () => {
           </div>
         </div>
 
-        <div ref={formRef} id="credit-card-form" role="form" aria-label="Contact information">
+        <div
+          ref={formRef}
+          id="credit-card-form"
+          role="form"
+          aria-label="Contact information"
+          className="credit-card-form"
+        >
           <h4 className="form-h4">Contact information</h4>
           <form className="form" onSubmit={handleSubmit(onSubmit)}>
             <div className="form-grid">

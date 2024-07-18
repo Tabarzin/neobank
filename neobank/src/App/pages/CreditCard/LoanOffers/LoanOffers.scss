@@ -1,0 +1,19 @@
+@import "@styles/mixins.scss";
+@import "@styles/variables";
+
+.loan-offer-content {
+  max-width: 1300px;
+  width: 100%;
+  display: flex;
+
+  justify-content: space-between;
+  margin: 0 auto;
+}
+
+.loan-offer-cards {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  flex-wrap: wrap;
+  gap: 10px;
+}

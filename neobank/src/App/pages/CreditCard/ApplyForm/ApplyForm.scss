@@ -12,14 +12,18 @@
     0 2px 4px 0 rgba(0, 0, 0, 0.2),
     0 0 8px 0 rgba(0, 0, 0, 0.08);
   background: $white;
-  padding: 30px;
 }
 .apply-slider-amount-block {
   display: flex;
+  padding: 30px;
 
   @media (max-width: 1068px) {
     flex-direction: column;
   }
+}
+
+.credit-card-form {
+  padding: 30px;
 }
 
 .apply-slider-block {
