@@ -11,7 +11,7 @@ const Confirmation: React.FC = () => {
 
   return (
     <section className="confirmation-content">
-      <div className="confirmation">
+      <div className="confirmation" id="confirmation">
         <h3 className="confirmation-h3">The preliminary decision has been sent to your email.</h3>
         <p className="confirmation-p">
           In the letter you can get acquainted with the preliminary decision on the credit card.

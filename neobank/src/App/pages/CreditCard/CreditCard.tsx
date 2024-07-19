@@ -12,11 +12,22 @@ import Confirmation from './LoanOffers/Confirmation/Confirmation';
 
 const CreditCard: React.FC = () => {
   const { showOffers, showConfirmation } = useSelector((state: RootState) => state.loanApplication);
+
+  let buttonText = 'Apply for card';
+  let targetId = 'credit-card-form';
+
+  if (showOffers) {
+    buttonText = 'Choose an offer';
+    targetId = 'loan-offers';
+  } else if (showConfirmation) {
+    buttonText = 'Continue registration';
+    targetId = 'confirmation';
+  }
   return (
     <div>
       <Header />
       <div className="main">
-        <CreditCardHero />
+        <CreditCardHero buttonText={buttonText} targetId={targetId} />
         <CardInfo />
         <GetCard />
         {!showOffers && !showConfirmation && <ApplyForm />}

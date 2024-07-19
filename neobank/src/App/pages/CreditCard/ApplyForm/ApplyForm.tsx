@@ -64,7 +64,7 @@ const ApplyForm: React.FC = () => {
         },
         body: JSON.stringify(formData),
       });
-
+      console.log(response, 'RESPONSE APPLY FORM');
       if (!response.ok) {
         throw new Error('Network response was not ok');
       }
@@ -87,7 +87,7 @@ const ApplyForm: React.FC = () => {
     <section>
       <div className="apply-form-content">
         <div className="apply-slider-amount-block">
-          <div className="apply-slider-block">
+          <div className="apply-slider-block" id="credit-card-form">
             <div className="apply-slider-text">
               <h3 className="apply-slider-title">Customize your card</h3>
               <p className="apply-slider-p"> Step 1 of 5</p>
@@ -132,13 +132,7 @@ const ApplyForm: React.FC = () => {
           </div>
         </div>
 
-        <div
-          ref={formRef}
-          id="credit-card-form"
-          role="form"
-          aria-label="Contact information"
-          className="credit-card-form"
-        >
+        <div ref={formRef} role="form" aria-label="Contact information" className="credit-card-form">
           <h4 className="form-h4">Contact information</h4>
           <form className="form" onSubmit={handleSubmit(onSubmit)}>
             <div className="form-grid">

@@ -1,14 +1,19 @@
 import Button from '@components/Button/Button';
 import './CreditCardHero.scss';
-import { useNavigate } from 'react-router-dom';
 import creditCard from '@assets/images/credit-card_cardImage1.svg';
 import Tooltip from '@components/Tooltip/Tooltip';
 
-const CreditCardHero: React.FC = () => {
-  const navigate = useNavigate();
+interface CreditCardHeroProps {
+  buttonText: string;
+  targetId: string;
+}
 
+const CreditCardHero: React.FC<CreditCardHeroProps> = ({ buttonText, targetId }) => {
   const handleClick = () => {
-    navigate('#credit-card-form');
+    const element = document.getElementById(targetId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
   };
 
   return (
@@ -40,7 +45,7 @@ const CreditCardHero: React.FC = () => {
               </Tooltip>
             </div>
           </div>
-          <Button onClick={handleClick}>Apply for card</Button>
+          <Button onClick={handleClick}>{buttonText}</Button>
         </div>
         <img src={creditCard} alt="Credit Card" className="creditcard-img" />
       </div>

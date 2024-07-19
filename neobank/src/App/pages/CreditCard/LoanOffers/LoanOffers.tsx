@@ -64,7 +64,7 @@ const LoanOffers: React.FC = () => {
       if (!response.ok) {
         throw new Error('Failed to submit offer');
       }
-
+      console.log(response, 'LOAN OFFERS');
       dispatch(selectOffer(offer));
       dispatch(showConfirmation());
     } catch (error) {
@@ -74,7 +74,7 @@ const LoanOffers: React.FC = () => {
 
   return (
     <section>
-      <div className="loan-offer-content">
+      <div className="loan-offer-content" id="loan-offers">
         <div className="loan-offer-cards">
           {offerDataList.map((offerData, index) => (
             <LoanOfferCard key={index} {...offerData} onSelect={() => handleSelectOffer(offerData)} />
