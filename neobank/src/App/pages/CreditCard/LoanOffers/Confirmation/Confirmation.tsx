@@ -10,19 +10,14 @@ const Confirmation: React.FC = () => {
   }
 
   return (
-    <div>
-      <h2>Application Confirmed</h2>
-      <p>Thank you for your application. Here are the details of your selected offer:</p>
-      <ul>
-        <li>Requested Amount: {selectedOffer.requestedAmount}</li>
-        <li>Total Amount: {selectedOffer.totalAmount}</li>
-        <li>Term: {selectedOffer.term} months</li>
-        <li>Monthly Payment: {selectedOffer.monthlyPayment}</li>
-        <li>Interest Rate: {selectedOffer.rate}%</li>
-        <li>Insurance Included: {selectedOffer.isInsuranceIncluded ? 'Yes' : 'No'}</li>
-        <li>Salary Client: {selectedOffer.isSalaryClient ? 'Yes' : 'No'}</li>
-      </ul>
-    </div>
+    <section className="confirmation-content">
+      <div className="confirmation">
+        <h3 className="confirmation-h3">The preliminary decision has been sent to your email.</h3>
+        <p className="confirmation-p">
+          In the letter you can get acquainted with the preliminary decision on the credit card.
+        </p>
+      </div>
+    </section>
   );
 };
 
