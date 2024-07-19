@@ -47,34 +47,62 @@ const defaultInitialState: LoanApplicationState = {
 };
 const initialState: LoanApplicationState = loadState();
 
+// const loanApplicationSlice = createSlice({
+//   name: 'loanApplication',
+//   initialState,
+//   reducers: {
+//     updateFormData: (state, action: PayloadAction<Partial<FormInputs>>) => {
+//       state.formData = { ...state.formData, ...action.payload };
+//       saveState(state);
+//     },
+//     setFormValidity: (state, action: PayloadAction<boolean>) => {
+//       state.isFormValid = action.payload;
+//       saveState(state);
+//     },
+//     showLoanOffers: (state) => {
+//       state.showOffers = true;
+//       state.showConfirmation = false;
+//       saveState(state);
+//     },
+//     selectOffer: (state, action: PayloadAction<LoanOfferProps>) => {
+//       state.selectedOffer = action.payload;
+//       saveState(state);
+//     },
+//     showConfirmation: (state) => {
+//       state.showOffers = false;
+//       state.showConfirmation = true;
+//       saveState(state);
+//     },
+//     resetState: (state) => {
+//       Object.assign(state, initialState);
+//       localStorage.removeItem('loanApplicationState');
+//     },
+//   },
+// });
+
 const loanApplicationSlice = createSlice({
   name: 'loanApplication',
   initialState,
   reducers: {
     updateFormData: (state, action: PayloadAction<Partial<FormInputs>>) => {
       state.formData = { ...state.formData, ...action.payload };
-      saveState(state);
     },
     setFormValidity: (state, action: PayloadAction<boolean>) => {
       state.isFormValid = action.payload;
-      saveState(state);
     },
     showLoanOffers: (state) => {
       state.showOffers = true;
       state.showConfirmation = false;
-      saveState(state);
     },
     selectOffer: (state, action: PayloadAction<LoanOfferProps>) => {
       state.selectedOffer = action.payload;
-      saveState(state);
     },
     showConfirmation: (state) => {
       state.showOffers = false;
       state.showConfirmation = true;
-      saveState(state);
     },
     resetState: (state) => {
-      Object.assign(state, initialState);
+      Object.assign(state, defaultInitialState);
       localStorage.removeItem('loanApplicationState');
     },
   },

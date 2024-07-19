@@ -64,7 +64,8 @@ const LoanOffers: React.FC = () => {
       if (!response.ok) {
         throw new Error('Failed to submit offer');
       }
-      console.log(response, 'LOAN OFFERS');
+
+      console.log(response, 'LOAN OFFERS response');
       dispatch(selectOffer(offer));
       dispatch(showConfirmation());
     } catch (error) {
