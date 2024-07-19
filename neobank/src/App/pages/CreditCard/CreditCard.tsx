@@ -19,8 +19,6 @@ const CreditCard: React.FC = () => {
         <CreditCardHero />
         <CardInfo />
         <GetCard />
-        {/* <ApplyFrom /> */}
-        {/* {showOffers ? <LoanOffers /> : <ApplyForm />} */}
         {!showOffers && !showConfirmation && <ApplyForm />}
         {showOffers && <LoanOffers />}
         {showConfirmation && <Confirmation />}
