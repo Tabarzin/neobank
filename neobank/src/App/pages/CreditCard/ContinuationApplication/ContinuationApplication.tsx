@@ -27,7 +27,7 @@ const ContinuationApplication: React.FC = () => {
     register,
     handleSubmit,
     control,
-    formState: { errors },
+    formState: { errors, dirtyFields },
   } = useForm<FormData>();
 
   const onSubmit = (data: FormData) => {
@@ -49,20 +49,23 @@ const ContinuationApplication: React.FC = () => {
                 <label className="form-p">
                   What's your gender <span className="redstar">*</span>
                 </label>
-                <select {...register('gender', { required: 'This field is required' })} className="input">
-                  <option value="">Select gender</option>
+                <select
+                  {...register('gender', { required: 'Select one of the options' })}
+                  className={`input ${errors.gender ? 'error' : ''} ${dirtyFields.gender && !errors.gender ? 'success' : ''}`}
+                >
+                  <option value=""></option>
                   <option value="MALE">Male</option>
                   <option value="FEMALE">Female</option>
                 </select>
-                {errors.gender && <span>{errors.gender.message}</span>}
+                {errors.gender && <span className="input-error">{errors.gender.message}</span>}
               </div>
 
               <div className="form-item input2">
                 <label className="form-p">
                   Your marital status <span className="redstar">*</span>
                 </label>
-                <select {...register('maritalStatus', { required: 'This field is required' })} className="input">
-                  <option value="">Select marital status</option>
+                <select {...register('maritalStatus', { required: 'Select one of the options' })} className="input">
+                  <option value=""></option>
                   <option value="MARRIED">Married</option>
                   <option value="DIVORCED">Divorced</option>
                   <option value="SINGLE">Single</option>
@@ -75,8 +78,8 @@ const ContinuationApplication: React.FC = () => {
                 <label className="form-p">
                   Your number of dependents <span className="redstar">*</span>
                 </label>
-                <select {...register('dependentAmount', { required: 'This field is required' })} className="input">
-                  <option value="">Select number of dependents</option>
+                <select {...register('dependentAmount', { required: 'Select one of the options' })} className="input">
+                  <option value=""></option>
                   {[0, 1, 2, 3, 4, 5].map((num) => (
                     <option key={num} value={num}>
                       {num}
@@ -94,7 +97,7 @@ const ContinuationApplication: React.FC = () => {
                   control={control}
                   name="passportIssueDate"
                   rules={{
-                    required: 'This field is required',
+                    required: 'Incorrect date of passport issue date',
                     validate: (value) => value <= new Date() || 'Date cannot be in the future',
                   }}
                   render={({ field }) => (
@@ -117,7 +120,7 @@ const ContinuationApplication: React.FC = () => {
                 <input
                   className="input"
                   {...register('passportIssueBranch', {
-                    required: 'This field is required',
+                    required: 'The series must be 6 digits',
                     pattern: {
                       value: /^\d{6}$/,
                       message: 'Must be exactly 6 digits',
@@ -134,8 +137,8 @@ const ContinuationApplication: React.FC = () => {
                 <label className="form-p">
                   Your employment status <span className="redstar">*</span>
                 </label>
-                <select {...register('employmentStatus', { required: 'This field is required' })} className="input">
-                  <option value="">Select employment status</option>
+                <select {...register('employmentStatus', { required: 'Select one of the options' })} className="input">
+                  <option value=""></option>
                   <option value="UNEMPLOYED">Unemployed</option>
                   <option value="SELF_EMPLOYED">Self-employed</option>
                   <option value="EMPLOYED">Employed</option>
@@ -151,7 +154,7 @@ const ContinuationApplication: React.FC = () => {
                 <input
                   className="input"
                   {...register('employerINN', {
-                    required: 'This field is required',
+                    required: 'Department code must be 12 digits',
                     pattern: {
                       value: /^\d{12}$/,
                       message: 'Must be exactly 12 digits',
@@ -169,7 +172,7 @@ const ContinuationApplication: React.FC = () => {
                 <input
                   className="input"
                   type="number"
-                  {...register('salary', { required: 'This field is required' })}
+                  {...register('salary', { required: 'Enter your salary' })}
                   placeholder="For example 100 000"
                 />
                 {errors.salary && <span>{errors.salary.message}</span>}
@@ -179,8 +182,8 @@ const ContinuationApplication: React.FC = () => {
                 <label className="form-p">
                   Your position <span className="redstar">*</span>
                 </label>
-                <select {...register('position', { required: 'This field is required' })} className="input">
-                  <option value="">Select position</option>
+                <select {...register('position', { required: 'Select one of the options' })} className="input">
+                  <option value=""></option>
                   <option value="WORKER">Worker</option>
                   <option value="MID_MANAGER">Mid Manager</option>
                   <option value="TOP_MANAGER">Top Manager</option>
@@ -197,7 +200,7 @@ const ContinuationApplication: React.FC = () => {
                   className="input"
                   type="number"
                   {...register('workExperienceTotal', {
-                    required: 'This field is required',
+                    required: 'Enter your work experience total',
                     max: { value: 99, message: 'Cannot exceed 99' },
                   })}
                   placeholder="For example 10"
@@ -213,7 +216,7 @@ const ContinuationApplication: React.FC = () => {
                   className="input"
                   type="number"
                   {...register('workExperienceCurrent', {
-                    required: 'This field is required',
+                    required: 'Enter your work experience current',
                     max: { value: 99, message: 'Cannot exceed 99' },
                   })}
                   placeholder="For example 2"
