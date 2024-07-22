@@ -12,9 +12,11 @@
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.2.5",
+    "@types/react-datepicker": "^7.0.0",
     "axios": "^1.7.2",
     "classnames": "^2.5.1",
     "react": "^18.2.0",
+    "react-datepicker": "^7.3.0",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.52.1",
     "react-loader-spinner": "^6.1.6",
