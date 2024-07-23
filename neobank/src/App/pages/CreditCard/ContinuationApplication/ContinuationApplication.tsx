@@ -1,6 +1,5 @@
 import Button from '@components/Button/Button';
 import { useState } from 'react';
-import DatePicker from 'react-datepicker';
 import { Controller, useForm } from 'react-hook-form';
 import { RotatingLines } from 'react-loader-spinner';
 import { useParams } from 'react-router-dom';
@@ -43,7 +42,7 @@ const ContinuationApplication: React.FC = () => {
             <p className="form-text-p"> Step 2 of 5</p>
           </div>
 
-          <form onSubmit={handleSubmit(onSubmit)}>
+          <form onSubmit={handleSubmit(onSubmit)} className="form">
             <div className="form-grid">
               <div className="form-item input1">
                 <label className="form-p">
@@ -57,28 +56,34 @@ const ContinuationApplication: React.FC = () => {
                   <option value="MALE">Male</option>
                   <option value="FEMALE">Female</option>
                 </select>
-                {errors.gender && <span className="input-error">{errors.gender.message}</span>}
+                {errors.gender && <span className="error">{errors.gender.message}</span>}
               </div>
 
               <div className="form-item input2">
                 <label className="form-p">
                   Your marital status <span className="redstar">*</span>
                 </label>
-                <select {...register('maritalStatus', { required: 'Select one of the options' })} className="input">
+                <select
+                  {...register('maritalStatus', { required: 'Select one of the options' })}
+                  className={`input ${errors.maritalStatus ? 'error' : ''} ${dirtyFields.maritalStatus && !errors.maritalStatus ? 'success' : ''}`}
+                >
                   <option value=""></option>
                   <option value="MARRIED">Married</option>
                   <option value="DIVORCED">Divorced</option>
                   <option value="SINGLE">Single</option>
                   <option value="WIDOW_WIDOWER">Widow/Widower</option>
                 </select>
-                {errors.maritalStatus && <span>{errors.maritalStatus.message}</span>}
+                {errors.maritalStatus && <span className="error">{errors.maritalStatus.message}</span>}
               </div>
 
               <div className="form-item input3">
                 <label className="form-p">
                   Your number of dependents <span className="redstar">*</span>
                 </label>
-                <select {...register('dependentAmount', { required: 'Select one of the options' })} className="input">
+                <select
+                  {...register('dependentAmount', { required: 'Select one of the options' })}
+                  className={`input ${errors.dependentAmount ? 'error' : ''} ${dirtyFields.dependentAmount && !errors.dependentAmount ? 'success' : ''}`}
+                >
                   <option value=""></option>
                   {[0, 1, 2, 3, 4, 5].map((num) => (
                     <option key={num} value={num}>
@@ -86,31 +91,31 @@ const ContinuationApplication: React.FC = () => {
                     </option>
                   ))}
                 </select>
-                {errors.dependentAmount && <span>{errors.dependentAmount.message}</span>}
+                {errors.dependentAmount && <span className="error">{errors.dependentAmount.message}</span>}
               </div>
 
               <div className="form-item input4">
                 <label className="form-p">
                   Date of issue of the passport <span className="redstar">*</span>
                 </label>
+
                 <Controller
                   control={control}
                   name="passportIssueDate"
                   rules={{
                     required: 'Incorrect date of passport issue date',
-                    validate: (value) => value <= new Date() || 'Date cannot be in the future',
+                    validate: (value) => new Date(value) <= new Date() || 'Date cannot be in the future',
                   }}
                   render={({ field }) => (
-                    <DatePicker
-                      onChange={(date) => field.onChange(date)}
-                      selected={field.value}
-                      placeholderText="Select Date and Time"
-                      dateFormat="dd/MM/yyyy"
-                      className="input"
+                    <input
+                      type="date"
+                      onChange={(e) => field.onChange(e.target.value)}
+                      className={`input ${errors.passportIssueDate ? 'error' : ''} ${dirtyFields.passportIssueDate && !errors.passportIssueDate ? 'success' : ''}`}
+                      placeholder="Select Date and Time"
                     />
                   )}
                 />
-                {errors.passportIssueDate && <span>{errors.passportIssueDate.message}</span>}
+                {errors.passportIssueDate && <span className="error">{errors.passportIssueDate.message}</span>}
               </div>
 
               <div className="form-item input5">
@@ -118,7 +123,7 @@ const ContinuationApplication: React.FC = () => {
                   Division code <span className="redstar">*</span>
                 </label>
                 <input
-                  className="input"
+                  className={`input ${errors.passportIssueBranch ? 'error' : ''} ${dirtyFields.passportIssueBranch && !errors.passportIssueBranch ? 'success' : ''}`}
                   {...register('passportIssueBranch', {
                     required: 'The series must be 6 digits',
                     pattern: {
@@ -128,7 +133,7 @@ const ContinuationApplication: React.FC = () => {
                   })}
                   placeholder="000000"
                 />
-                {errors.passportIssueBranch && <span>{errors.passportIssueBranch.message}</span>}
+                {errors.passportIssueBranch && <span className="error">{errors.passportIssueBranch.message}</span>}
               </div>
             </div>
             <h4 className="form-h4">Employment</h4>
@@ -137,14 +142,17 @@ const ContinuationApplication: React.FC = () => {
                 <label className="form-p">
                   Your employment status <span className="redstar">*</span>
                 </label>
-                <select {...register('employmentStatus', { required: 'Select one of the options' })} className="input">
+                <select
+                  {...register('employmentStatus', { required: 'Select one of the options' })}
+                  className={`input ${errors.employmentStatus ? 'error' : ''} ${dirtyFields.employmentStatus && !errors.employmentStatus ? 'success' : ''}`}
+                >
                   <option value=""></option>
                   <option value="UNEMPLOYED">Unemployed</option>
                   <option value="SELF_EMPLOYED">Self-employed</option>
                   <option value="EMPLOYED">Employed</option>
                   <option value="BUSINESS_OWNER">Business owner</option>
                 </select>
-                {errors.employmentStatus && <span>{errors.employmentStatus.message}</span>}
+                {errors.employmentStatus && <span className="error">{errors.employmentStatus.message}</span>}
               </div>
 
               <div className="form-item">
@@ -152,7 +160,7 @@ const ContinuationApplication: React.FC = () => {
                   Your employer INN <span className="redstar">*</span>
                 </label>
                 <input
-                  className="input"
+                  className={`input ${errors.employerINN ? 'error' : ''} ${dirtyFields.employerINN && !errors.employerINN ? 'success' : ''}`}
                   {...register('employerINN', {
                     required: 'Department code must be 12 digits',
                     pattern: {
@@ -162,7 +170,7 @@ const ContinuationApplication: React.FC = () => {
                   })}
                   placeholder="000000000000"
                 />
-                {errors.employerINN && <span>{errors.employerINN.message}</span>}
+                {errors.employerINN && <span className="error">{errors.employerINN.message}</span>}
               </div>
 
               <div className="form-item">
@@ -170,26 +178,29 @@ const ContinuationApplication: React.FC = () => {
                   Your salary <span className="redstar">*</span>
                 </label>
                 <input
-                  className="input"
+                  className={`input ${errors.salary ? 'error' : ''} ${dirtyFields.salary && !errors.salary ? 'success' : ''}`}
                   type="number"
                   {...register('salary', { required: 'Enter your salary' })}
                   placeholder="For example 100 000"
                 />
-                {errors.salary && <span>{errors.salary.message}</span>}
+                {errors.salary && <span className="error">{errors.salary.message}</span>}
               </div>
 
               <div className="form-item">
                 <label className="form-p">
                   Your position <span className="redstar">*</span>
                 </label>
-                <select {...register('position', { required: 'Select one of the options' })} className="input">
+                <select
+                  {...register('position', { required: 'Select one of the options' })}
+                  className={`input ${errors.position ? 'error' : ''} ${dirtyFields.position && !errors.position ? 'success' : ''}`}
+                >
                   <option value=""></option>
                   <option value="WORKER">Worker</option>
                   <option value="MID_MANAGER">Mid Manager</option>
                   <option value="TOP_MANAGER">Top Manager</option>
                   <option value="OWNER">Owner</option>
                 </select>
-                {errors.position && <span>{errors.position.message}</span>}
+                {errors.position && <span className="error">{errors.position.message}</span>}
               </div>
 
               <div className="form-item">
@@ -197,7 +208,7 @@ const ContinuationApplication: React.FC = () => {
                   Your work experience total <span className="redstar">*</span>
                 </label>
                 <input
-                  className="input"
+                  className={`input ${errors.workExperienceTotal ? 'error' : ''} ${dirtyFields.workExperienceTotal && !errors.workExperienceTotal ? 'success' : ''}`}
                   type="number"
                   {...register('workExperienceTotal', {
                     required: 'Enter your work experience total',
@@ -205,7 +216,7 @@ const ContinuationApplication: React.FC = () => {
                   })}
                   placeholder="For example 10"
                 />
-                {errors.workExperienceTotal && <span>{errors.workExperienceTotal.message}</span>}
+                {errors.workExperienceTotal && <span className="error">{errors.workExperienceTotal.message}</span>}
               </div>
 
               <div className="form-item">
@@ -213,7 +224,7 @@ const ContinuationApplication: React.FC = () => {
                   Your work experience current <span className="redstar">*</span>
                 </label>
                 <input
-                  className="input"
+                  className={`input ${errors.workExperienceCurrent ? 'error' : ''} ${dirtyFields.workExperienceCurrent && !errors.workExperienceCurrent ? 'success' : ''}`}
                   type="number"
                   {...register('workExperienceCurrent', {
                     required: 'Enter your work experience current',
@@ -221,7 +232,7 @@ const ContinuationApplication: React.FC = () => {
                   })}
                   placeholder="For example 2"
                 />
-                {errors.workExperienceCurrent && <span>{errors.workExperienceCurrent.message}</span>}
+                {errors.workExperienceCurrent && <span className="error">{errors.workExperienceCurrent.message}</span>}
               </div>
             </div>
             <Button type="submit" className="form-button" disabled={isLoading}>
