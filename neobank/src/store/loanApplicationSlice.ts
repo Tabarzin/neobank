@@ -2,7 +2,7 @@ import { FormInputs } from '@App/pages/CreditCard/ApplyForm/ApplyForm';
 import { LoanOfferProps } from '@App/pages/CreditCard/LoanOffers/LoanOfferCard/LoanOfferCard';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-interface LoanApplicationState {
+export interface LoanApplicationState {
   formData: FormInputs;
   isFormValid: boolean;
   showOffers: boolean;
@@ -29,7 +29,7 @@ const saveState = (state: LoanApplicationState) => {
     console.log(err);
   }
 };
-const defaultInitialState: LoanApplicationState = {
+export const defaultInitialState: LoanApplicationState = {
   formData: {
     lastname: '',
     firstname: '',
