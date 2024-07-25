@@ -7,6 +7,7 @@ import Cashback from './pages/CreditCard/CardInfo/Cashback/Cashback';
 import FAQ from './pages/CreditCard/CardInfo/FAQ/FAQ';
 import RatesConditions from './pages/CreditCard/CardInfo/RatesConditions/RatesConditions';
 import ContinuationApplication from './pages/CreditCard/ContinuationApplication/ContinuationApplication';
+import SignPage from './pages/CreditCard/ContinuationApplication/DocumentsFormed/SignPage/SignPage';
 import PaymentSchedule from './pages/CreditCard/ContinuationApplication/PaymentSchedule/PaymentSchedule';
 import HomePage from './pages/HomePage';
 
@@ -26,6 +27,7 @@ const App: React.FC = () => {
           </Route>
           <Route path="/loan/:id" element={<ContinuationApplication />} />
           <Route path="/loan/:applicationId/document" element={<PaymentSchedule />} />
+          <Route path="/loan/:applicationId/document/sign" element={<SignPage />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

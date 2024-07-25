@@ -1,2 +1,23 @@
 @import "@styles/mixins.scss";
 @import "@styles/variables";
+
+.documents-content {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 100px;
+}
+
+.documents {
+  &-h3 {
+    @include h3;
+    text-align: center;
+  }
+
+  &-p {
+    @include p-primary;
+    text-align: center;
+  }
+}

@@ -93,11 +93,12 @@ const PaymentSchedule: React.FC = () => {
   };
 
   if (isLoading) return <div>Loading...</div>;
-  if (error) return <div>{error}</div>;
+
   if (showDocuments) return <DocumentsFormed />;
 
   if (isLoading) return <div>Loading...</div>;
-  if (error) return <div>{error}</div>;
+  //   if (error) return <div>{error}</div>;
+  if (error) return <DocumentsFormed />;
 
   return (
     <section>
@@ -135,13 +136,20 @@ const PaymentSchedule: React.FC = () => {
             <Button onClick={handleDeny} className="deny">
               Deny
             </Button>
-            <label>
-              <input type="checkbox" checked={isChecked} onChange={(e) => setIsChecked(e.target.checked)} />I agree with
-              the payment schedule
-            </label>
-            <Button onClick={handleSend} disabled={!isChecked}>
-              Send
-            </Button>
+            <div className="send-block">
+              <label className="checkbox-label">
+                <input
+                  type="checkbox"
+                  checked={isChecked}
+                  onChange={(e) => setIsChecked(e.target.checked)}
+                  className="checkbox"
+                />
+                I agree with the payment schedule
+              </label>
+              <Button onClick={handleSend} disabled={!isChecked} className="send-button">
+                Send
+              </Button>
+            </div>
           </div>
         </div>
       </div>
