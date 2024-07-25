@@ -25,7 +25,7 @@ const App: React.FC = () => {
             <Route path="faq" element={<FAQ />} />
           </Route>
           <Route path="/loan/:id" element={<ContinuationApplication />} />
-          <Route path="/loan/:id/document" element={<PaymentSchedule />} />
+          <Route path="/loan/:applicationId/document" element={<PaymentSchedule />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

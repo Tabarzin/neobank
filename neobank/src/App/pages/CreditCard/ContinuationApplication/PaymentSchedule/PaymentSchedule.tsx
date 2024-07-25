@@ -1,3 +1,4 @@
+import Button from '@components/Button/Button';
 import Footer from '@components/Footer/Footer';
 import Header from '@components/Header';
 import axios from 'axios';
@@ -16,10 +17,6 @@ interface TableData {
 
 type SortKey = keyof TableData;
 
-interface Props {
-  applicationId: string;
-}
-
 const PaymentSchedule: React.FC = () => {
   const { applicationId } = useParams<{ applicationId: string }>();
   const [data, setData] = useState<TableData[]>([]);
@@ -31,9 +28,9 @@ const PaymentSchedule: React.FC = () => {
     const fetchData = async () => {
       try {
         setIsLoading(true);
-        const response = await axios.get(`http://localhost:8080/admin/application/1`);
-        setData(response.data);
-        console.log(response.data);
+        const response = await axios.get(`http://localhost:8080/admin/application/${applicationId}`);
+        setData(response.data.credit.paymentSchedule);
+        console.log(response.data.credit.paymentSchedule);
         setIsLoading(false);
       } catch (err) {
         setError('Failed to fetch data');
@@ -84,21 +81,28 @@ const PaymentSchedule: React.FC = () => {
             <div className="grid-header">
               {Object.keys(data[0]).map((key) => (
                 <div key={key} className="grid-cell header-cell" onClick={() => sortData(key as SortKey)}>
-                  {key.toUpperCase().replace('_', ' ')}
+                  {key.charAt(0).toUpperCase() + key.slice(1).replace(/([A-Z])/g, ' $1')}
                   <span className="sort-icon">{getSortDirection(key as SortKey)}</span>
                 </div>
               ))}
             </div>
             {data.map((row, index) => (
               <div key={index} className="grid-row">
-                {Object.values(row).map((value, cellIndex) => (
+                {Object.entries(row).map(([key, value], cellIndex) => (
                   <div key={cellIndex} className="grid-cell">
-                    {value}
+                    <span className="cell-header">
+                      {key.charAt(0).toUpperCase() + key.slice(1).replace(/([A-Z])/g, ' $1')}:{' '}
+                    </span>
+                    {typeof value === 'number' && key !== 'number' ? value.toFixed(2) : value}
                   </div>
                 ))}
               </div>
             ))}
           </div>
+        </div>
+        <div className="payment-buttons">
+          <Button>Deny</Button>
+          <Button>Send</Button>
         </div>
       </div>
       <Footer />
