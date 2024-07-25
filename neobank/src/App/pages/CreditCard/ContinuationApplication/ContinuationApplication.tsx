@@ -385,7 +385,7 @@ export type ContinuationFormData = {
   gender: 'MALE' | 'FEMALE';
   maritalStatus: 'MARRIED' | 'DIVORCED' | 'SINGLE' | 'WIDOW_WIDOWER';
   dependentAmount: number;
-  passportIssueDate: Date;
+  passportIssueDate: string;
   passportIssueBranch: string;
   employmentStatus: 'UNEMPLOYED' | 'SELF_EMPLOYED' | 'EMPLOYED' | 'BUSINESS_OWNER';
   employerINN: string;
@@ -455,11 +455,22 @@ const ContinuationApplication: React.FC = () => {
     }
   };
 
+  // const handleFieldChange = (
+  //   name: keyof ContinuationFormData,
+  //   value: ContinuationFormData[keyof ContinuationFormData],
+  // ) => {
+  //   dispatch(setFormData({ ...savedFormData, [name]: value }));
+  // };
+
   const handleFieldChange = (
     name: keyof ContinuationFormData,
-    value: ContinuationFormData[keyof ContinuationFormData],
+    value: ContinuationFormData[keyof ContinuationFormData] | Date,
   ) => {
-    dispatch(setFormData({ ...savedFormData, [name]: value }));
+    if (name === 'passportIssueDate' && value instanceof Date) {
+      dispatch(setFormData({ ...savedFormData, [name]: value.toISOString() }));
+    } else {
+      dispatch(setFormData({ ...savedFormData, [name]: value }));
+    }
   };
 
   const watchAllFields = watch();
@@ -553,7 +564,7 @@ const ContinuationApplication: React.FC = () => {
                   Date of issue of the passport <span className="redstar">*</span>
                 </label>
 
-                <Controller
+                {/* <Controller
                   control={control}
                   name="passportIssueDate"
                   rules={{
@@ -567,6 +578,30 @@ const ContinuationApplication: React.FC = () => {
                         field.onChange(e);
                         handleFieldChange('passportIssueDate', new Date(e.target.value));
                       }}
+                      className={`input ${errors.passportIssueDate ? 'error' : watchAllFields.passportIssueDate ? 'success' : ''}`}
+                      placeholder="Select Date and Time"
+                    />
+                  )}
+                /> */}
+                <Controller
+                  control={control}
+                  name="passportIssueDate"
+                  rules={{
+                    required: 'Incorrect date of passport issue date',
+                    validate: (value) => {
+                      const date = value ? new Date(value) : null;
+                      return !date || date <= new Date() || 'Date cannot be in the future';
+                    },
+                  }}
+                  render={({ field }) => (
+                    <input
+                      type="date"
+                      onChange={(e) => {
+                        const date = e.target.value ? new Date(e.target.value) : null;
+                        field.onChange(date ? date.toISOString() : '');
+                        handleFieldChange('passportIssueDate', date || '');
+                      }}
+                      value={field.value ? new Date(field.value).toISOString().split('T')[0] : ''}
                       className={`input ${errors.passportIssueDate ? 'error' : watchAllFields.passportIssueDate ? 'success' : ''}`}
                       placeholder="Select Date and Time"
                     />

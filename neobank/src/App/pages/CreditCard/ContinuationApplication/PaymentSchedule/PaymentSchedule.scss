@@ -1,2 +1,110 @@
 @import "@styles/mixins.scss";
 @import "@styles/variables";
+
+.payment-content {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  max-width: 1300px;
+  max-height: 585px;
+  margin: 0 auto;
+  border-radius: 28px;
+  box-shadow:
+    0 2px 4px 0 rgba(0, 0, 0, 0.2),
+    0 0 8px 0 rgba(0, 0, 0, 0.08);
+  background: $white;
+}
+
+.payment-table {
+  padding: 30px;
+}
+.payment-table-text {
+  display: flex;
+  align-items: center;
+  width: 40%;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+  &-title {
+    @include ubuntu-bold;
+    @include h3;
+  }
+
+  &-p {
+    @include p-primary;
+  }
+}
+
+.grid-table {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 1px;
+  background-color: #ddd;
+  border: 1px solid #ddd;
+  font-family: Arial, sans-serif;
+}
+
+.grid-header {
+  display: contents;
+}
+
+.grid-cell {
+  background-color: #fff;
+  padding: 10px;
+  text-align: left;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.header-cell {
+  background-color: #f2f2f2;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.header-cell:hover {
+  background-color: #ddd;
+}
+
+.sort-icon {
+  margin-left: 5px;
+  font-size: 0.8em;
+}
+
+.grid-row:nth-child(even) .grid-cell {
+  background-color: #f9f9f9;
+}
+
+.grid-row:hover .grid-cell {
+  background-color: #f5f5f5;
+}
+
+@media (max-width: 768px) {
+  .grid-table {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .grid-header {
+    display: none;
+  }
+
+  .grid-cell {
+    padding: 8px;
+    font-size: 0.9em;
+  }
+
+  .grid-cell::before {
+    content: attr(data-label);
+    font-weight: bold;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 5px;
+  }
+}
+
+@media (max-width: 480px) {
+  .grid-table {
+    grid-template-columns: 1fr;
+  }
+}

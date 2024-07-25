@@ -1,5 +1,5 @@
 import { FormInputs } from '@App/pages/CreditCard/ApplyForm/ApplyForm';
-import { LoanOfferProps } from '@App/pages/CreditCard/LoanOffers/LoanOfferCard/LoanOfferCard';
+import { LoanOfferData, LoanOfferProps } from '@App/pages/CreditCard/LoanOffers/LoanOfferCard/LoanOfferCard';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 export interface LoanApplicationState {
@@ -8,6 +8,7 @@ export interface LoanApplicationState {
   showOffers: boolean;
   showConfirmation: boolean;
   selectedOffer: LoanOfferProps | null;
+  loanOffers: LoanOfferData[];
 }
 const loadState = (): LoanApplicationState => {
   try {
@@ -44,6 +45,7 @@ export const defaultInitialState: LoanApplicationState = {
   showOffers: false,
   showConfirmation: false,
   selectedOffer: null,
+  loanOffers: [],
 };
 const initialState: LoanApplicationState = loadState();
 
@@ -97,6 +99,9 @@ const loanApplicationSlice = createSlice({
     selectOffer: (state, action: PayloadAction<LoanOfferProps>) => {
       state.selectedOffer = action.payload;
     },
+    setLoanOffers: (state, action: PayloadAction<LoanOfferData[]>) => {
+      state.loanOffers = action.payload;
+    },
     showConfirmation: (state) => {
       state.showOffers = false;
       state.showConfirmation = true;
@@ -108,7 +113,14 @@ const loanApplicationSlice = createSlice({
   },
 });
 
-export const { updateFormData, setFormValidity, showLoanOffers, selectOffer, showConfirmation, resetState } =
-  loanApplicationSlice.actions;
+export const {
+  updateFormData,
+  setFormValidity,
+  showLoanOffers,
+  selectOffer,
+  showConfirmation,
+  resetState,
+  setLoanOffers,
+} = loanApplicationSlice.actions;
 
 export default loanApplicationSlice.reducer;

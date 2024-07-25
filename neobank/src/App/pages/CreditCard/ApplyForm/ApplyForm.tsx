@@ -302,7 +302,13 @@ import { RotatingLines } from 'react-loader-spinner';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 import './ApplyForm.scss';
-import { showLoanOffers, updateFormData, setFormValidity } from '@store/loanApplicationSlice';
+import {
+  showLoanOffers,
+  updateFormData,
+  setFormValidity,
+  resetState,
+  setLoanOffers,
+} from '@store/loanApplicationSlice';
 
 export interface FormInputs {
   lastname: string;
@@ -366,11 +372,18 @@ const ApplyForm: React.FC = () => {
         },
         body: JSON.stringify(submissionData),
       });
+      console.log(response, 'respons Application');
 
       if (!response.ok) {
         throw new Error('Network response was not ok');
       }
 
+      if (response.ok) {
+        dispatch(resetState());
+      }
+
+      const loanOffers = await response.json();
+      dispatch(setLoanOffers(loanOffers));
       dispatch(showLoanOffers());
     } catch (error) {
       console.error('Error:', error);
