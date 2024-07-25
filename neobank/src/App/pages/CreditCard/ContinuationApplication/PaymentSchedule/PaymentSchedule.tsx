@@ -3,7 +3,9 @@ import Footer from '@components/Footer/Footer';
 import Header from '@components/Header';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
+import DocumentsFormed from '../DocumentsFormed/DocumentsFormed';
+import Modal from './Modal/Modal';
 import './PaymentSchedule.scss';
 
 interface TableData {
@@ -23,6 +25,11 @@ const PaymentSchedule: React.FC = () => {
   const [sortConfig, setSortConfig] = useState<{ key: SortKey; direction: 'ascending' | 'descending' } | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const navigate = useNavigate();
+  const [isChecked, setIsChecked] = useState(false);
+  const [showDenyModal, setShowDenyModal] = useState(false);
+  const [showFinalDenyModal, setShowFinalDenyModal] = useState(false);
+  const [showDocuments, setShowDocuments] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -64,6 +71,31 @@ const PaymentSchedule: React.FC = () => {
     return sortConfig.direction === 'ascending' ? '▲' : '▼';
   };
 
+  const handleSend = async () => {
+    try {
+      await axios.post(`http://localhost:8080/document/${applicationId}`);
+      setShowDocuments(true);
+    } catch (err) {
+      setError('Failed to send document');
+    }
+  };
+
+  const handleDeny = () => {
+    setShowDenyModal(true);
+  };
+
+  const handleFinalDeny = () => {
+    setShowFinalDenyModal(true);
+  };
+
+  const handleGoHome = () => {
+    navigate('/');
+  };
+
+  if (isLoading) return <div>Loading...</div>;
+  if (error) return <div>{error}</div>;
+  if (showDocuments) return <DocumentsFormed />;
+
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>{error}</div>;
 
@@ -99,13 +131,39 @@ const PaymentSchedule: React.FC = () => {
               </div>
             ))}
           </div>
-        </div>
-        <div className="payment-buttons">
-          <Button>Deny</Button>
-          <Button>Send</Button>
+          <div className="payment-buttons">
+            <Button onClick={handleDeny} className="deny">
+              Deny
+            </Button>
+            <label>
+              <input type="checkbox" checked={isChecked} onChange={(e) => setIsChecked(e.target.checked)} />I agree with
+              the payment schedule
+            </label>
+            <Button onClick={handleSend} disabled={!isChecked}>
+              Send
+            </Button>
+          </div>
         </div>
       </div>
       <Footer />
+      <Modal isOpen={showDenyModal} onClose={() => setShowDenyModal(false)} title="Confirm Denial">
+        <h5 className="deny-title">Deny application</h5>
+        <p className="deny-text">You exactly sure, you want to cancel this application?</p>
+        <div className="denial-buttons">
+          <Button onClick={handleFinalDeny} className="deny">
+            Deny
+          </Button>
+          <Button onClick={() => setShowDenyModal(false)}>Cancel</Button>
+        </div>
+      </Modal>
+
+      <Modal isOpen={showFinalDenyModal} onClose={handleGoHome} title="Application Denied">
+        <h5 className="deny-title">Deny application</h5>
+        <p className="deny-text">Your application has been denied</p>
+        <Button onClick={handleGoHome} className="go-home-button">
+          Go home
+        </Button>
+      </Modal>
     </section>
   );
 };

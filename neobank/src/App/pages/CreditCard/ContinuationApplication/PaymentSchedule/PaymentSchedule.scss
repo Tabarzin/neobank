@@ -108,3 +108,37 @@
     text-align: left;
   }
 }
+
+.payment-buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.deny {
+  background: rgba(217, 55, 55, 0.8);
+
+  &-title {
+    @include ubuntu-bold;
+
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 147%;
+    letter-spacing: 0.02em;
+    text-align: center;
+    color: $white;
+  }
+
+  &-text {
+    @include p-primary;
+  }
+}
+
+.denial-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 100px;
+}
+
+.go-home-button {
+  align-self: flex-end;
+}
