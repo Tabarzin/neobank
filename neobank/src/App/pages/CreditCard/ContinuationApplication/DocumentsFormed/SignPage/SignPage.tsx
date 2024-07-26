@@ -8,6 +8,7 @@ import { useParams } from 'react-router-dom';
 import { useState } from 'react';
 import SignSuccess from '../SignSuccess/SignSuccess';
 import axios from 'axios';
+import ConfirmationTemplate from '@components/ConfirmationTemplate/ConfirmationTemplate';
 
 const SignPage: React.FC = () => {
   const { applicationId } = useParams<{ applicationId: string }>();
@@ -33,7 +34,12 @@ const SignPage: React.FC = () => {
   };
 
   if (showSignSuccess) {
-    return <SignSuccess />;
+    return (
+      <ConfirmationTemplate
+        title="Documents have been successfully signed and sent for approval"
+        message="Within 10 minutes you will be sent a PIN code to your email for confirmation"
+      />
+    );
   }
 
   return (
@@ -67,7 +73,7 @@ const SignPage: React.FC = () => {
               onChange={(e) => setIsChecked(e.target.checked)}
               className="checkbox"
             />
-            I agree with the payment schedule
+            I agree
           </label>
           <Button onClick={handleSend} disabled={!isChecked || isLoading} className="send-button">
             {isLoading ? 'Sending...' : 'Send'}

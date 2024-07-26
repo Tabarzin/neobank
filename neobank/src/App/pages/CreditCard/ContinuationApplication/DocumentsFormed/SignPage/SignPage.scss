@@ -7,6 +7,7 @@
   flex-direction: column;
   max-width: 1300px;
   margin: 0 auto;
+  padding: 30px;
 }
 
 .sign-text {
@@ -46,4 +47,11 @@
     line-height: 112%;
     color: $black;
   }
+}
+
+.send-block {
+  display: flex;
+  align-items: center;
+  gap: 120px;
+  justify-content: flex-end;
 }

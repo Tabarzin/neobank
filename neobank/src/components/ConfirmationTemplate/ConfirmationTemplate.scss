@@ -1,0 +1,23 @@
+@import "@styles/mixins.scss";
+@import "@styles/variables";
+
+.confirmation-content {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  max-width: 1300px;
+  margin: 0 auto;
+  height: 300px;
+}
+
+.confirmation {
+  &-h3 {
+    @include h3;
+    text-align: center;
+  }
+
+  &-p {
+    @include p-primary;
+    text-align: center;
+  }
+}
