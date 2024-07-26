@@ -9,6 +9,7 @@ import RatesConditions from './pages/CreditCard/CardInfo/RatesConditions/RatesCo
 import ContinuationApplication from './pages/CreditCard/ContinuationApplication/ContinuationApplication';
 import Code from './pages/CreditCard/ContinuationApplication/DocumentsFormed/Code/Code';
 import SignPage from './pages/CreditCard/ContinuationApplication/DocumentsFormed/SignPage/SignPage';
+import FinalPage from './pages/CreditCard/ContinuationApplication/FinalPage/FinalPage';
 import PaymentSchedule from './pages/CreditCard/ContinuationApplication/PaymentSchedule/PaymentSchedule';
 import HomePage from './pages/HomePage';
 
@@ -30,6 +31,7 @@ const App: React.FC = () => {
           <Route path="/loan/:applicationId/document" element={<PaymentSchedule />} />
           <Route path="/loan/:applicationId/document/sign" element={<SignPage />} />
           <Route path="/loan/:applicationId/code" element={<Code />} />
+          <Route path="/success" element={<FinalPage />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

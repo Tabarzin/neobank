@@ -13,10 +13,6 @@ export type LoanOfferData = {
   isSalaryClient: boolean;
 };
 
-// export interface LoanOfferProps extends LoanOfferData {
-//   onSelect: (offer: LoanOfferData) => void;
-// }
-
 export interface LoanOfferProps extends LoanOfferData {
   onSelect: () => void;
 }

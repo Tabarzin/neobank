@@ -1,2 +1,18 @@
 @import "@styles/mixins.scss";
 @import "@styles/variables";
+
+.inputs-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.inputs {
+  display: flex;
+}
+
+.invalid-code {
+  @include p-primary;
+  color: red;
+}
