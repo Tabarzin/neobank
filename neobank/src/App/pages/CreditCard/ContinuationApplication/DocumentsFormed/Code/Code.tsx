@@ -1,8 +1,7 @@
-import ConfirmationTemplate from '@/components/ConfirmationTemplate/ConfirmationTemplate';
+import ConfirmationTemplate from '@components/ConfirmationTemplate/ConfirmationTemplate';
 import axios from 'axios';
 import { useEffect, useRef, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import FinalPage from '../../FinalPage/FinalPage';
 import './Code.scss';
 
 const DigitInput: React.FC<{
@@ -89,7 +88,6 @@ const Code: React.FC = () => {
   };
   useEffect(() => {
     if (code.every((digit) => digit !== '')) {
-      console.log(code.join(''), 'CODE');
       submitCode();
     }
   }, [code]);
@@ -97,7 +95,6 @@ const Code: React.FC = () => {
   const submitCode = async () => {
     try {
       const numericCode = Number(code.join(''));
-      console.log(`Submitting code: ${numericCode}`);
 
       const response = await axios.post(`http://localhost:8080/document/${applicationId}/sign/code`, numericCode, {
         headers: {
@@ -106,7 +103,6 @@ const Code: React.FC = () => {
       });
 
       if (response.status === 200) {
-        console.log('success');
         navigate('/success');
       } else {
         console.log('error');

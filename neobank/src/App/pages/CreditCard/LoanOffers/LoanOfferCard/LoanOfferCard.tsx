@@ -1,6 +1,8 @@
 import './LoanOfferCard.scss';
 import loan_offer_img from '@assets/images/loan-offer-img.svg';
 import Button from '@components/Button/Button';
+import { RotatingLines } from 'react-loader-spinner';
+import { useState } from 'react';
 
 export type LoanOfferData = {
   applicationId: number;
@@ -14,7 +16,8 @@ export type LoanOfferData = {
 };
 
 export interface LoanOfferProps extends LoanOfferData {
-  onSelect: () => void;
+  // onSelect: () => void;
+  onSelect: (data: LoanOfferData) => void;
 }
 const LoanOfferCard: React.FC<LoanOfferProps> = ({
   applicationId,
@@ -28,6 +31,7 @@ const LoanOfferCard: React.FC<LoanOfferProps> = ({
   onSelect,
 }) => {
   const handleClick = () => {
+    setIsLoading(true);
     onSelect({
       applicationId,
       requestedAmount,
@@ -39,6 +43,8 @@ const LoanOfferCard: React.FC<LoanOfferProps> = ({
       isSalaryClient,
     });
   };
+
+  const [isLoading, setIsLoading] = useState(false);
   return (
     <div className="loan-offer-card" onClick={handleClick}>
       <img src={loan_offer_img} alt="Loan Offer Image" className="loan-img" />
@@ -55,7 +61,27 @@ const LoanOfferCard: React.FC<LoanOfferProps> = ({
           Salary client: <span className={isSalaryClient ? 'icon yes' : 'icon not'}></span>
         </p>
       </div>
-      <Button>Select</Button>
+      {/* <Button>Select</Button> */}
+      <Button type="submit" disabled={isLoading}>
+        {isLoading ? (
+          <>
+            <RotatingLines
+              visible={true}
+              height="20"
+              width="20"
+              color="black"
+              strokeWidth="5"
+              animationDuration="0.75"
+              ariaLabel="rotating-lines-loading"
+              wrapperStyle={{ display: 'inline-block', marginRight: '10px', verticalAlign: 'middle' }}
+              wrapperClass=""
+            />
+            Loading...
+          </>
+        ) : (
+          'Select'
+        )}
+      </Button>
     </div>
   );
 };
