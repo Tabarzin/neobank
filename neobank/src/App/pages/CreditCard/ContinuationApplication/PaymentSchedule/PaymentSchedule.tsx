@@ -1,10 +1,10 @@
+import ConfirmationTemplate from '@components/ConfirmationTemplate/ConfirmationTemplate';
 import Button from '@components/Button/Button';
 import Footer from '@components/Footer/Footer';
 import Header from '@components/Header';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import DocumentsFormed from '../DocumentsFormed/DocumentsFormed';
 import Modal from './Modal/Modal';
 import './PaymentSchedule.scss';
 
@@ -94,11 +94,16 @@ const PaymentSchedule: React.FC = () => {
 
   if (isLoading) return <div>Loading...</div>;
 
-  if (showDocuments) return <DocumentsFormed />;
+  if (showDocuments)
+    return (
+      <ConfirmationTemplate
+        title={'Documents are formed'}
+        message={'Documents for signing will be sent to your email'}
+      />
+    );
 
   if (isLoading) return <div>Loading...</div>;
-  //   if (error) return <div>{error}</div>;
-  if (error) return <DocumentsFormed />;
+  if (error) return <div>{error}</div>;
 
   return (
     <section>

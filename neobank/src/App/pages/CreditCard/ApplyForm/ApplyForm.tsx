@@ -372,7 +372,6 @@ const ApplyForm: React.FC = () => {
         },
         body: JSON.stringify(submissionData),
       });
-      console.log(response, 'respons Application');
 
       if (!response.ok) {
         throw new Error('Network response was not ok');

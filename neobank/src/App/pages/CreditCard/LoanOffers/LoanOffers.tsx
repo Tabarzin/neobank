@@ -159,7 +159,6 @@ import LoanOfferCard, { LoanOfferData, LoanOfferProps } from './LoanOfferCard/Lo
 const LoanOffers: React.FC = () => {
   const dispatch = useDispatch();
   const { selectedOffer, loanOffers } = useSelector((state: RootState) => state.loanApplication);
-  console.log(loanOffers);
 
   const handleSelectOffer = async (offer: LoanOfferData) => {
     try {

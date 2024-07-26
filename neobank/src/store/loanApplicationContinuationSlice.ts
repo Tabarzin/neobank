@@ -1,54 +1,5 @@
-// import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-
-// interface ApplicationState {
-//   id: string | null;
-// }
-
-// const initialState: ApplicationState = {
-//   id: null,
-// };
-
-// const loanApplicationContinuationSlice = createSlice({
-//   name: 'application',
-//   initialState,
-//   reducers: {
-//     setApplicationId: (state, action: PayloadAction<string>) => {
-//       state.id = action.payload;
-//     },
-//   },
-// });
-
-// export const { setApplicationId } = loanApplicationContinuationSlice.actions;
-// export default loanApplicationContinuationSlice.reducer;
-
 import { ContinuationFormData } from '@App/pages/CreditCard/ContinuationApplication/ContinuationApplication';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-
-// interface ApplicationState {
-//   id: string | null;
-//   formData: FormData | null;
-// }
-
-// const initialState: ApplicationState = {
-//   id: null,
-//   formData: null,
-// };
-
-// const loanApplicationContinuationSlice = createSlice({
-//   name: 'application',
-//   initialState,
-//   reducers: {
-//     setApplicationId: (state, action: PayloadAction<string>) => {
-//       state.id = action.payload;
-//     },
-//     setFormData: (state, action: PayloadAction<FormData>) => {
-//       state.formData = action.payload;
-//     },
-//   },
-// });
-
-// export const { setApplicationId, setFormData } = loanApplicationContinuationSlice.actions;
-// export default loanApplicationContinuationSlice.reducer;
 
 interface ApplicationState {
   id: string | null;
@@ -68,6 +19,15 @@ const loadState = (): ApplicationState => {
   }
 };
 
+const saveState = (state: ApplicationState) => {
+  try {
+    const serializedState = JSON.stringify(state);
+    localStorage.setItem('loanApplicationContinuationState', serializedState);
+  } catch (err) {
+    console.error('Error saving state:', err);
+  }
+};
+
 const initialState: ApplicationState = loadState();
 
 const loanApplicationContinuationSlice = createSlice({
@@ -76,9 +36,11 @@ const loanApplicationContinuationSlice = createSlice({
   reducers: {
     setApplicationId: (state, action: PayloadAction<string>) => {
       state.id = action.payload;
+      saveState(state);
     },
     setFormData: (state, action: PayloadAction<ContinuationFormData>) => {
       state.formData = action.payload;
+      saveState(state);
     },
     resetState: (state) => {
       state.id = null;
