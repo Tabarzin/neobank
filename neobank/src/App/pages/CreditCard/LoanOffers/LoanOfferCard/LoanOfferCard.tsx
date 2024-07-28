@@ -16,7 +16,6 @@ export type LoanOfferData = {
 };
 
 export interface LoanOfferProps extends LoanOfferData {
-  // onSelect: () => void;
   onSelect: (data: LoanOfferData) => void;
 }
 const LoanOfferCard: React.FC<LoanOfferProps> = ({
@@ -61,7 +60,7 @@ const LoanOfferCard: React.FC<LoanOfferProps> = ({
           Salary client: <span className={isSalaryClient ? 'icon yes' : 'icon not'}></span>
         </p>
       </div>
-      {/* <Button>Select</Button> */}
+
       <Button type="submit" disabled={isLoading}>
         {isLoading ? (
           <>

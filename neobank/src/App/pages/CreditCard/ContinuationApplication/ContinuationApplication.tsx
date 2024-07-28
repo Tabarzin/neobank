@@ -86,19 +86,6 @@ const ContinuationApplication: React.FC = () => {
     }
   };
 
-  // const handleFieldChange = (
-  //   name: keyof ContinuationFormData,
-  //   value: ContinuationFormData[keyof ContinuationFormData] | Date,
-  // ) => {
-  //   if (savedFormData !== null) {
-  //     if (name === 'passportIssueDate' && value instanceof Date) {
-  //       dispatch(setFormData({ ...savedFormData, [name]: value.toISOString() }));
-  //     } else {
-  //       dispatch(setFormData({ ...savedFormData, [name]: value as ContinuationFormData[keyof ContinuationFormData] }));
-  //     }
-  //   }
-  // };
-
   const handleFieldChange = (
     name: keyof ContinuationFormData,
     value: ContinuationFormData[keyof ContinuationFormData] | Date,

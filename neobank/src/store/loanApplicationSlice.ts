@@ -23,6 +23,8 @@ const loadState = (): LoanApplicationState => {
   }
 };
 
+const initialState: LoanApplicationState = loadState();
+
 const saveState = (state: LoanApplicationState) => {
   try {
     const serializedState = JSON.stringify(state);
@@ -48,7 +50,6 @@ export const defaultInitialState: LoanApplicationState = {
   selectedOffer: null,
   loanOffers: [],
 };
-const initialState: LoanApplicationState = loadState();
 
 const loanApplicationSlice = createSlice({
   name: 'loanApplication',
