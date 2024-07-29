@@ -1,0 +1,44 @@
+@import "@styles/mixins.scss";
+@import "@styles/variables";
+
+.notfound-content {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  max-width: 1300px;
+  margin: 0 auto;
+  gap: 20px;
+  padding: 10px;
+}
+
+.notfound-block {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  @media (max-width: 500px) {
+    flex-direction: column;
+  }
+}
+
+.notfound-block_text {
+}
+.notfound-h3 {
+  @include h3;
+}
+.notfound-sub {
+  @include ubuntu-medium;
+  font-size: 30px;
+  line-height: 112%;
+  color: $black;
+}
+
+.notfound-p {
+  @include p-primary;
+
+  color: #4b4b4b;
+}
+.notfound-block_image {
+  width: 100%;
+  height: auto;
+}

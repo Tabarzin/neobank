@@ -1,0 +1,28 @@
+@import "@styles/mixins.scss";
+@import "@styles/variables";
+
+.final-page-content {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  max-width: 1300px;
+  margin: 0 auto;
+
+  align-items: center;
+  margin-bottom: 50px;
+}
+
+.final-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  &-h3 {
+    @include h3;
+    text-align: center;
+  }
+
+  &-p {
+    @include p-primary;
+    text-align: center;
+  }
+}

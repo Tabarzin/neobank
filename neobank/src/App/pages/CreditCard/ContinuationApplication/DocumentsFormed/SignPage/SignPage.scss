@@ -1,0 +1,57 @@
+@import "@styles/mixins.scss";
+@import "@styles/variables";
+
+.sign-content {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 30px;
+}
+
+.sign-text {
+  display: flex;
+  align-items: center;
+  width: 50%;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+  &-title {
+    @include ubuntu-bold;
+    @include h3;
+  }
+
+  &-p {
+    @include p-primary;
+  }
+}
+
+.sign-info {
+  @include ubuntu-medium;
+
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 112%;
+  color: #4f5665;
+}
+
+.download {
+  display: flex;
+
+  &-text {
+    @include ubuntu-medium;
+
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 112%;
+    color: $black;
+  }
+}
+
+.send-block {
+  display: flex;
+  align-items: center;
+  gap: 120px;
+  justify-content: flex-end;
+}

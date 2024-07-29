@@ -1,0 +1,27 @@
+@import "@styles/mixins.scss";
+@import "@styles/variables";
+
+.confirmation-content {
+  max-width: 1300px;
+  width: 100%;
+  display: flex;
+
+  justify-content: space-between;
+  margin: 0 auto;
+}
+
+.confirmation {
+  border: 1px solid #5b35d5;
+  border-radius: 10px;
+  width: 1300px;
+
+  &-h3 {
+    @include h3;
+    text-align: center;
+  }
+  &-p {
+    @include p-primary;
+    color: #4f5665;
+    text-align: center;
+  }
+}
