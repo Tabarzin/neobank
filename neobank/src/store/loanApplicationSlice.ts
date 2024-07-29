@@ -11,6 +11,25 @@ export interface LoanApplicationState {
   selectedOffer: LoanOfferData | null;
   loanOffers: LoanOfferData[];
 }
+
+export const defaultInitialState: LoanApplicationState = {
+  formData: {
+    lastname: '',
+    firstname: '',
+    patronimic: '',
+    email: '',
+    birth: '',
+    passport_series: '',
+    passport_num: '',
+    select1: '',
+  },
+  isFormValid: false,
+  showOffers: false,
+  showConfirmation: false,
+  selectedOffer: null,
+  loanOffers: [],
+};
+
 const loadState = (): LoanApplicationState => {
   try {
     const serializedState = localStorage.getItem('loanApplicationState');
@@ -32,23 +51,6 @@ const saveState = (state: LoanApplicationState) => {
   } catch (err) {
     console.log(err);
   }
-};
-export const defaultInitialState: LoanApplicationState = {
-  formData: {
-    lastname: '',
-    firstname: '',
-    patronimic: '',
-    email: '',
-    birth: '',
-    passport_series: '',
-    passport_num: '',
-    select1: '',
-  },
-  isFormValid: false,
-  showOffers: false,
-  showConfirmation: false,
-  selectedOffer: null,
-  loanOffers: [],
 };
 
 const loanApplicationSlice = createSlice({
