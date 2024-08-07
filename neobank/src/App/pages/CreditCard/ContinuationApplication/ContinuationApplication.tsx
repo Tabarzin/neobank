@@ -2,7 +2,7 @@ import { RootState } from '@store/store';
 import Button from '@components/Button/Button';
 import { useState, useEffect } from 'react';
 import { Controller, useForm } from 'react-hook-form';
-import { RotatingLines } from 'react-loader-spinner';
+import { ThreeCircles } from 'react-loader-spinner';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import './ContinuationApplication.scss';
@@ -362,18 +362,16 @@ const ContinuationApplication: React.FC = () => {
             <Button type="submit" className="form-button" disabled={isLoading}>
               {isLoading ? (
                 <>
-                  <RotatingLines
+                  <ThreeCircles
                     visible={true}
                     height="20"
                     width="20"
-                    color="black"
-                    strokeWidth="5"
-                    animationDuration="0.75"
-                    ariaLabel="rotating-lines-loading"
+                    color="#4fa94d"
+                    ariaLabel="three-circles-loading"
                     wrapperStyle={{ display: 'inline-block', marginRight: '10px', verticalAlign: 'middle' }}
                     wrapperClass=""
                   />
-                  Loading...
+                  ) Loading...
                 </>
               ) : (
                 'Continue'

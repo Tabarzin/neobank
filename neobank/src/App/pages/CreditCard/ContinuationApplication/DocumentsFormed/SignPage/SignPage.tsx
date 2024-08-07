@@ -6,7 +6,6 @@ import fileicon from '@assets/icons/file_icon.svg';
 import Button from '@components/Button/Button';
 import { useParams } from 'react-router-dom';
 import { useState } from 'react';
-import SignSuccess from '../SignSuccess/SignSuccess';
 import axios from 'axios';
 import ConfirmationTemplate from '@components/ConfirmationTemplate/ConfirmationTemplate';
 
