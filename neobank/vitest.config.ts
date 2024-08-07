@@ -1,15 +1,9 @@
-/// <reference types="vitest" />
-/// <reference types="vite/client" />
-
-import { defineConfig } from 'vite';
+import { defineConfig } from 'vitest/config';
 import react from '@vitejs/plugin-react';
 import path from 'path';
 
-// https://vitejs.dev/config/
 export default defineConfig({
-  server: {
-    port: 3000,
-  },
+  plugins: [react()],
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),
@@ -23,10 +17,15 @@ export default defineConfig({
       '@customHooks': path.resolve(__dirname, './src/customHooks'),
     },
   },
-
   test: {
-    environment: 'jsdom',
     globals: true,
+    environment: 'jsdom',
+    setupFiles: ['./setupTests.ts'],
+    deps: {
+      inline: ['react-icons'],
+    },
+    coverage: {
+      reporter: ['text', 'json', 'html'],
+    },
   },
-  plugins: [react()],
 });
