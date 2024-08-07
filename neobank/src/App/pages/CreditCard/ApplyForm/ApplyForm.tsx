@@ -252,10 +252,11 @@ const ApplyForm: React.FC = () => {
 
               {/* Date of Birth */}
               <div className="grid-item">
-                <p className="form-p">
+                <label htmlFor="birthdate" className="form-p">
                   Your date of birth <span className="redstar">*</span>
-                </p>
+                </label>
                 <input
+                  id="birthdate"
                   className={`form-input ${errors.birth ? 'error' : ''} ${dirtyFields.birth && !errors.birth ? 'success' : ''}`}
                   type="date"
                   {...register('birth', {
