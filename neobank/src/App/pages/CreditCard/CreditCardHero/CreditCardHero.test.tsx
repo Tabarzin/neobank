@@ -36,7 +36,6 @@ describe('CreditCardHero', () => {
   test('displays the tooltip correctly', () => {
     render(<CreditCardHero buttonText="Apply Now" targetId="target-id" />);
 
-    // Hover over the tooltip triggers
     fireEvent.mouseEnter(screen.getByText('No percent'));
     expect(screen.getByText('When repaying the full debt up to 160 days.')).toBeInTheDocument();
 
