@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/19</span>
+                <span class='fraction'>19/19</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">80% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/1</span>
+                <span class='fraction'>4/5</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/1</span>
+                <span class='fraction'>1/1</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/19</span>
+                <span class='fraction'>19/19</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -85,50 +85,50 @@
 <a name='L20'></a><a href='#L20'>20</a>
 <a name='L21'></a><a href='#L21'>21</a>
 <a name='L22'></a><a href='#L22'>22</a>
-<a name='L23'></a><a href='#L23'>23</a></td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
+<a name='L23'></a><a href='#L23'>23</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js"><span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" ><span class="branch-0 cbranch-no" title="branch not covered" >import axios from 'axios';</span></span></span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import axios from 'axios';
 import { Dispatch } from 'redux';
-<span class="cstat-no" title="statement not covered" >import { fetchNewsStart, fetchNewsSuccess, fetchNewsFailure, NewsArticle } from '@store/newsSlice';</span>
+import { fetchNewsStart, fetchNewsSuccess, fetchNewsFailure, NewsArticle } from '@store/newsSlice';
 &nbsp;
-<span class="cstat-no" title="statement not covered" >const API_KEY = '7c5a94e9fa3041fb8745c31cd85d8835';</span>
-<span class="cstat-no" title="statement not covered" >const API_URL = `https://newsapi.org/v2/top-headlines?country=us&amp;category=business&amp;apiKey=${API_KEY}`;</span>
+const API_KEY = '7c5a94e9fa3041fb8745c31cd85d8835';
+const API_URL = `https://newsapi.org/v2/top-headlines?country=us&amp;category=business&amp;apiKey=${API_KEY}`;
 &nbsp;
-<span class="cstat-no" title="statement not covered" >export const fetchNews = () =&gt; async (dispatch: Dispatch) =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >  dispatch(fetchNewsStart());</span>
-<span class="cstat-no" title="statement not covered" >  try {</span>
-<span class="cstat-no" title="statement not covered" >    const response = await axios.get(API_URL);</span>
-<span class="cstat-no" title="statement not covered" >    const articles = response.data.articles.map((article: NewsArticle) =&gt; ({</span>
-<span class="cstat-no" title="statement not covered" >      urlToImage: article.urlToImage,</span>
-<span class="cstat-no" title="statement not covered" >      title: article.title,</span>
-<span class="cstat-no" title="statement not covered" >      url: article.url,</span>
-<span class="cstat-no" title="statement not covered" >      description: article.description,</span>
-<span class="cstat-no" title="statement not covered" >    }));</span>
-<span class="cstat-no" title="statement not covered" >    dispatch(fetchNewsSuccess(articles));</span>
-<span class="cstat-no" title="statement not covered" >  } catch (error) {</span>
-<span class="cstat-no" title="statement not covered" >    dispatch(fetchNewsFailure(error instanceof Error ? error.message : 'An error occurred'));</span>
-<span class="cstat-no" title="statement not covered" >  }</span>
-<span class="cstat-no" title="statement not covered" >};</span>
+export const fetchNews = () =&gt; async (dispatch: Dispatch) =&gt; {
+  dispatch(fetchNewsStart());
+  try {
+    const response = await axios.get(API_URL);
+    const articles = response.data.articles.map((article: NewsArticle) =&gt; ({
+      urlToImage: article.urlToImage,
+      title: article.title,
+      url: article.url,
+      description: article.description,
+    }));
+    dispatch(fetchNewsSuccess(articles));
+  } catch (error) {
+    dispatch(fetchNewsFailure(error instanceof Error ? error.<span class="branch-0 cbranch-no" title="branch not covered" >message : 'An error occurred')</span>);
+  }
+};
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -136,7 +136,7 @@ import { Dispatch } from 'redux';
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-08-08T17:45:09.386Z
+                at 2024-08-08T21:43:28.452Z
             </div>
         <script src="../../prettify.js"></script>
         <script>

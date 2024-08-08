@@ -85,4 +85,23 @@ describe('ContinuationApplication', () => {
       workExperienceCurrent: 2,
     });
   });
+
+  it('renders the continue button with correct label', () => {
+    const store = configureStore({
+      reducer: {
+        loanApplicationCont: loanApplicationContinuationReducer,
+      },
+    });
+    render(
+      <MemoryRouter>
+        <Provider store={store}>
+          <ContinuationApplication />
+        </Provider>
+      </MemoryRouter>,
+    );
+
+    const button = screen.getByRole('button', { name: /continue/i });
+    expect(button).toBeInTheDocument();
+    expect(button).toBeEnabled();
+  });
 });

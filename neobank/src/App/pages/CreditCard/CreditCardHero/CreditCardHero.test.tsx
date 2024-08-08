@@ -3,7 +3,7 @@ import CreditCardHero from './CreditCardHero';
 import '@testing-library/jest-dom';
 
 describe('CreditCardHero', () => {
-  test('renders the component correctly', () => {
+  it('renders the component correctly', () => {
     render(<CreditCardHero buttonText="Apply Now" targetId="target-id" />);
 
     expect(screen.getByText('Platinum digital credit card')).toBeInTheDocument();
@@ -19,11 +19,18 @@ describe('CreditCardHero', () => {
     expect(screen.getByAltText('Credit Card')).toBeInTheDocument();
   });
 
-  test('calls the handleClick function when the button is clicked', () => {
+  it('calls the handleClick function when the button is clicked', () => {
     const mockScrollIntoView = vi.fn();
-    global.document.getElementById = vi.fn(() => ({
-      scrollIntoView: mockScrollIntoView,
-    }));
+
+    global.document.getElementById = vi.fn(
+      () =>
+        ({
+          scrollIntoView: mockScrollIntoView,
+
+          focus: vi.fn(),
+          blur: vi.fn(),
+        }) as unknown as HTMLElement,
+    );
 
     render(<CreditCardHero buttonText="Apply Now" targetId="target-id" />);
 
@@ -33,7 +40,7 @@ describe('CreditCardHero', () => {
     expect(mockScrollIntoView).toHaveBeenCalledWith({ behavior: 'smooth' });
   });
 
-  test('displays the tooltip correctly', () => {
+  it('displays the tooltip correctly', () => {
     render(<CreditCardHero buttonText="Apply Now" targetId="target-id" />);
 
     fireEvent.mouseEnter(screen.getByText('No percent'));

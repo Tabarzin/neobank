@@ -9,7 +9,6 @@ describe('AboutCard', () => {
   });
 
   it('renders all cards with correct text and icons', () => {
-    // Check the presence and content of the cards
     const card1 = screen.getByText(/Up to 50 000/i);
     expect(card1).toBeInTheDocument();
     expect(card1.nextElementSibling).toHaveTextContent(/Cash and transfers without commission and percent/i);
@@ -38,7 +37,6 @@ describe('AboutCard', () => {
   });
 
   it('renders all icons', () => {
-    // Check the presence of all icons
     const icons = ['Money Icon', 'Calendar Icon', 'Clock Icon', 'Bag Icon', 'Credit card Icon'];
 
     icons.forEach((icon) => {

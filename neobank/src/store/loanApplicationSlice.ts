@@ -43,15 +43,6 @@ const loadState = (): LoanApplicationState => {
 
 const initialState: LoanApplicationState = loadState();
 
-// const saveState = (state: LoanApplicationState) => {
-//   try {
-//     const serializedState = JSON.stringify(state);
-//     localStorage.setItem('loanApplicationState', serializedState);
-//   } catch (err) {
-//     console.log(err);
-//   }
-// };
-
 const loanApplicationSlice = createSlice({
   name: 'loanApplication',
   initialState,
