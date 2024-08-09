@@ -2,7 +2,7 @@ import { selectOffer, showConfirmation } from '@store/loanApplicationSlice';
 import { RootState } from '@store/store';
 import { useDispatch, useSelector } from 'react-redux';
 import './LoanOffers.scss';
-import LoanOfferCard, { LoanOfferData, LoanOfferProps } from './LoanOfferCard/LoanOfferCard';
+import LoanOfferCard, { LoanOfferData } from './LoanOfferCard/LoanOfferCard';
 
 const LoanOffers: React.FC = () => {
   const dispatch = useDispatch();

@@ -2,7 +2,7 @@ import { RootState } from '@store/store';
 import Button from '@components/Button/Button';
 import { useState, useEffect } from 'react';
 import { Controller, useForm } from 'react-hook-form';
-import { RotatingLines } from 'react-loader-spinner';
+import { ThreeCircles } from 'react-loader-spinner';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import './ContinuationApplication.scss';
@@ -121,10 +121,11 @@ const ContinuationApplication: React.FC = () => {
           <form onSubmit={handleSubmit(onSubmit)} className="form">
             <div className="form-grid_next">
               <div className="form-item input1">
-                <label className="form-p">
-                  What's your gender <span className="redstar">*</span>
+                <label htmlFor="gender" className="form-p">
+                  What is your gender <span className="redstar">*</span>
                 </label>
                 <select
+                  id="gender"
                   {...register('gender', { required: 'Select one of the options' })}
                   className={`input ${errors.gender ? 'error' : watchAllFields.gender ? 'success' : ''}`}
                   onChange={(e) => {
@@ -140,10 +141,11 @@ const ContinuationApplication: React.FC = () => {
               </div>
 
               <div className="form-item input2">
-                <label className="form-p">
+                <label htmlFor="maritalStatus" className="form-p">
                   Your marital status <span className="redstar">*</span>
                 </label>
                 <select
+                  id="maritalStatus"
                   {...register('maritalStatus', { required: 'Select one of the options' })}
                   onChange={(e) => {
                     register('maritalStatus').onChange(e);
@@ -161,10 +163,11 @@ const ContinuationApplication: React.FC = () => {
               </div>
 
               <div className="form-item input3">
-                <label className="form-p">
+                <label htmlFor="dependedAmount" className="form-p">
                   Your number of dependents <span className="redstar">*</span>
                 </label>
                 <select
+                  id="dependedAmount"
                   {...register('dependentAmount', { required: 'Select one of the options' })}
                   onChange={(e) => {
                     register('dependentAmount').onChange(e);
@@ -183,7 +186,7 @@ const ContinuationApplication: React.FC = () => {
               </div>
 
               <div className="form-item input4">
-                <label className="form-p">
+                <label htmlFor="issueDate" className="form-p">
                   Date of issue of the passport <span className="redstar">*</span>
                 </label>
 
@@ -199,6 +202,7 @@ const ContinuationApplication: React.FC = () => {
                   }}
                   render={({ field }) => (
                     <input
+                      id="issueDate"
                       type="date"
                       onChange={(e) => {
                         const date = e.target.value ? new Date(e.target.value) : null;
@@ -215,10 +219,11 @@ const ContinuationApplication: React.FC = () => {
               </div>
 
               <div className="form-item input5">
-                <label className="form-p">
+                <label htmlFor="divisionCode" className="form-p">
                   Division code <span className="redstar">*</span>
                 </label>
                 <input
+                  id="divisionCode"
                   className={`input ${errors.passportIssueBranch ? 'error' : watchAllFields.passportIssueBranch?.length === 6 ? 'success' : 'error'}`}
                   {...register('passportIssueBranch', {
                     required: 'The series must be 6 digits',
@@ -239,10 +244,11 @@ const ContinuationApplication: React.FC = () => {
             <h4 className="form-h4">Employment</h4>
             <div className="form-grid-employment">
               <div className="form-item">
-                <label className="form-p">
+                <label htmlFor="employmentStatus" className="form-p">
                   Your employment status <span className="redstar">*</span>
                 </label>
                 <select
+                  id="employmentStatus"
                   {...register('employmentStatus', { required: 'Select one of the options' })}
                   onChange={(e) => {
                     register('employmentStatus').onChange(e);
@@ -260,10 +266,11 @@ const ContinuationApplication: React.FC = () => {
               </div>
 
               <div className="form-item">
-                <label className="form-p">
+                <label htmlFor="INN" className="form-p">
                   Your employer INN <span className="redstar">*</span>
                 </label>
                 <input
+                  id="INN"
                   className={`input ${errors.employerINN ? 'error' : watchAllFields.employerINN?.length === 12 ? 'success' : 'error'}`}
                   {...register('employerINN', {
                     required: 'Department code must be 12 digits',
@@ -282,10 +289,11 @@ const ContinuationApplication: React.FC = () => {
               </div>
 
               <div className="form-item">
-                <label className="form-p">
+                <label htmlFor="salary" className="form-p">
                   Your salary <span className="redstar">*</span>
                 </label>
                 <input
+                  id="salary"
                   className={`input ${errors.salary ? 'error' : watchAllFields.salary ? 'success' : ''}`}
                   type="number"
                   {...register('salary', { required: 'Enter your salary' })}
@@ -299,10 +307,11 @@ const ContinuationApplication: React.FC = () => {
               </div>
 
               <div className="form-item">
-                <label className="form-p">
+                <label htmlFor="position" className="form-p">
                   Your position <span className="redstar">*</span>
                 </label>
                 <select
+                  id="position"
                   {...register('position', { required: 'Select one of the options' })}
                   onChange={(e) => {
                     register('position').onChange(e);
@@ -320,10 +329,11 @@ const ContinuationApplication: React.FC = () => {
               </div>
 
               <div className="form-item">
-                <label className="form-p">
+                <label htmlFor="workexp" className="form-p">
                   Your work experience total <span className="redstar">*</span>
                 </label>
                 <input
+                  id="workexp"
                   className={`input ${errors.workExperienceTotal ? 'error' : watchAllFields.workExperienceTotal ? 'success' : ''}`}
                   type="number"
                   {...register('workExperienceTotal', {
@@ -340,10 +350,11 @@ const ContinuationApplication: React.FC = () => {
               </div>
 
               <div className="form-item">
-                <label className="form-p">
+                <label htmlFor="workexpCurrent" className="form-p">
                   Your work experience current <span className="redstar">*</span>
                 </label>
                 <input
+                  id="workexpCurrent"
                   className={`input ${errors.workExperienceCurrent ? 'error' : watchAllFields.workExperienceCurrent ? 'success' : ''}`}
                   type="number"
                   {...register('workExperienceCurrent', {
@@ -362,18 +373,16 @@ const ContinuationApplication: React.FC = () => {
             <Button type="submit" className="form-button" disabled={isLoading}>
               {isLoading ? (
                 <>
-                  <RotatingLines
+                  <ThreeCircles
                     visible={true}
                     height="20"
                     width="20"
-                    color="black"
-                    strokeWidth="5"
-                    animationDuration="0.75"
-                    ariaLabel="rotating-lines-loading"
+                    color="#4fa94d"
+                    ariaLabel="three-circles-loading"
                     wrapperStyle={{ display: 'inline-block', marginRight: '10px', verticalAlign: 'middle' }}
                     wrapperClass=""
                   />
-                  Loading...
+                  ) Loading...
                 </>
               ) : (
                 'Continue'

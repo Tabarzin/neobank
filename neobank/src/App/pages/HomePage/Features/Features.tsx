@@ -1,6 +1,5 @@
 import './Features.scss';
 import features_image from '@assets/images/features_image.svg';
-import check_circle from '@assets/images/check-circle.svg';
 
 const Features = () => {
   return (

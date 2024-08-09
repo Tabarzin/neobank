@@ -2,7 +2,8 @@ import { RootState } from '@store/store';
 import Button from '@components/Button/Button';
 import { useRef, useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { RotatingLines } from 'react-loader-spinner';
+// import { Circles } from 'react-loader-spinner';
+import ClipLoader from 'react-spinners/ClipLoader';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 import './ApplyForm.scss';
@@ -27,7 +28,7 @@ export interface FormInputs {
 
 const ApplyForm: React.FC = () => {
   const dispatch = useDispatch();
-  const { formData, isFormValid } = useSelector((state: RootState) => state.loanApplication);
+  const { formData } = useSelector((state: RootState) => state.loanApplication);
   const [amount, setAmount] = useState(150000);
   const [isLoading, setIsLoading] = useState(false);
   const location = useLocation();
@@ -251,10 +252,11 @@ const ApplyForm: React.FC = () => {
 
               {/* Date of Birth */}
               <div className="grid-item">
-                <p className="form-p">
+                <label htmlFor="birthdate" className="form-p">
                   Your date of birth <span className="redstar">*</span>
-                </p>
+                </label>
                 <input
+                  id="birthdate"
                   className={`form-input ${errors.birth ? 'error' : ''} ${dirtyFields.birth && !errors.birth ? 'success' : ''}`}
                   type="date"
                   {...register('birth', {
@@ -322,18 +324,16 @@ const ApplyForm: React.FC = () => {
             <Button type="submit" className="form-button" disabled={isLoading}>
               {isLoading ? (
                 <>
-                  <RotatingLines
+                  {/* <Circles
                     visible={true}
                     height="20"
                     width="20"
                     color="black"
-                    strokeWidth="5"
-                    animationDuration="0.75"
-                    ariaLabel="rotating-lines-loading"
+                    ariaLabel="circles-loading"
                     wrapperStyle={{ display: 'inline-block', marginRight: '10px', verticalAlign: 'middle' }}
                     wrapperClass=""
-                  />
-                  Loading...
+                  /> */}
+                  <ClipLoader color="#003cff" size={20} />) Loading...
                 </>
               ) : (
                 'Continue'

@@ -4,19 +4,6 @@ import newsSliceReducer from './newsSlice';
 import loanApplicationReducer, { defaultInitialState, LoanApplicationState } from './loanApplicationSlice';
 import applicationReducer from './loanApplicationContinuationSlice';
 
-// const loadLoanApplicationState = (): LoanApplicationState | undefined => {
-//   try {
-//     const serializedState = localStorage.getItem('loanApplicationState');
-//     if (serializedState === null) {
-//       return defaultInitialState;
-//     }
-//     return JSON.parse(serializedState);
-//   } catch (err) {
-//     console.error('Error loading state:', err);
-//     return defaultInitialState;
-//   }
-// };
-
 const loadLoanApplicationState = (): LoanApplicationState => {
   try {
     const serializedState = localStorage.getItem('loanApplicationState');

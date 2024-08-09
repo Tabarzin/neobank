@@ -6,7 +6,9 @@
     "module": "ESNext",
     "skipLibCheck": true,
 
+    "types": ["vite/client", "vitest/globals"],
     "moduleResolution": "node",
+    "esModuleInterop": true,
     "allowImportingTsExtensions": true,
     "allowSyntheticDefaultImports": true,
     "resolveJsonModule": true,
